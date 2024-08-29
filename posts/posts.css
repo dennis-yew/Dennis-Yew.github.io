@@ -128,3 +128,60 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* 导航栏整体样式 */
+.navbar {
+    background-color: #f6f8fa;
+    /* 浅灰色背景 */
+    padding: 10px 20px;
+    /* 内边距，使导航项与边界有一些距离 */
+    border-bottom: 1px solid #eaecef;
+    /* 底部边框 */
+    display: flex;
+    /* 使用 flexbox 布局 */
+    justify-content: space-between;
+    /* 两边对齐 */
+    align-items: center;
+    /* 垂直居中对齐 */
+}
+
+/* 导航栏内链接样式 */
+.navbar a {
+    color: #0366d6;
+    /* 链接颜色（GitHub 蓝色） */
+    text-decoration: none;
+    /* 去除默认的下划线 */
+    margin-right: 15px;
+    /* 每个链接之间的间距 */
+    font-weight: 500;
+    /* 链接字体粗细 */
+}
+
+/* 鼠标悬停链接效果 */
+.navbar a:hover {
+    text-decoration: underline;
+    /* 鼠标悬停时显示下划线 */
+}
+
+/* 当前页面链接的样式（可选） */
+.navbar a.active {
+    font-weight: bold;
+    /* 当前页面链接加粗 */
+    color: #24292e;
+    /* 更深的颜色 */
+}
+
+/* 对于较小屏幕，导航栏变为列布局 */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        /* 垂直排列 */
+        align-items: flex-start;
+        /* 左对齐 */
+    }
+
+    .navbar a {
+        margin: 5px 0;
+        /* 每个链接之间的垂直间距 */
+    }
+}
