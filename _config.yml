@@ -4,18 +4,46 @@
 title: My Jekyll Site
 description: A site that supports multiple languages.
 baseurl: "" # Base URL for the site, leave empty for root
-url: "https://example.com" # Your site URL
+url: "https://dennis-yew.github.io" # Your site URL
 
 # Language settings
 plugins:
   - jekyll-multiple-languages-plugin
+  - jekyll-seo-tag # Optional: for SEO meta tags
 
 languages:
   - en
   - zh
+  - es # Example of adding more languages
 
 default_lang: en
 
 # Build settings
 markdown: kramdown
 theme: minima
+exclude:
+  - README.md # Exclude specific files from being processed
+  - .gitignore # Exclude the .gitignore file
+
+# Pagination settings (optional)
+paginate: 10
+paginate_path: "/page:num/"
+
+# Social media settings (optional)
+social:
+  github: https://github.com/yourusername
+  twitter: https://twitter.com/yourusername
+  linkedin: https://linkedin.com/in/yourusername
+
+# Additional settings
+author: Your Name
+email: your.email@example.com
+
+# Google Analytics settings (optional)
+google_analytics: UA-XXXXXXXXX-X
+
+# Optional: custom collections
+collections:
+  featured_posts:
+    output: true
+    permalink: /featured/:title/
