@@ -1,6 +1,6 @@
-# Welcome to My Blog🌟
+## Welcome to My Blog🌟
 
-Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.
+Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.[Chinese](./README_zh.md)
 
 ## What You'll Find Here🚀
 
