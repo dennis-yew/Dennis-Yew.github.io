@@ -4,7 +4,7 @@
 title: My Jekyll Site
 description: A site that supports multiple languages.
 baseurl: "" # Base URL for the site, leave empty for root
-url: "https://dennis-yew.github.io" # Your site URL
+url: " https://dennis-yew.github.io/Dennis-Yew/" # Your site URL
 
 # Language settings
 plugins:
