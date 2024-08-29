@@ -25,8 +25,7 @@
 如有任何疑问或反馈，您可以通过 [theeast392@163.com](mailto:theeast392@163.com) 与我联系。
 
 ---
-<p align="right">
-<a href="./README.md">English</a>
-</p>
+
+[![英文](https://img.shields.io/badge/英文-Click%20Here-blue)](./README.md)
 
 祝您阅读和探索愉快！😊

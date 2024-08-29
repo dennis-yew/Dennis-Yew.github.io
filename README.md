@@ -25,8 +25,6 @@ If you have suggestions or would like to contribute, feel free to create an issu
 For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com).
 
 ---
-<p align="right">
-  <a href="./README_zh.md">中文</a>
-</p>
+[![中文](https://img.shields.io/badge/中文版本-Click%20Here-blue)](./README_zh.md)
 
 Happy reading and exploring!😊
