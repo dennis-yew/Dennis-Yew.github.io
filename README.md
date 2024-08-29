@@ -1,6 +1,6 @@
 # Welcome to My Blog🌟
-
-Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.[![中文](https://img.shields.io/badge/中文版本-Click%20Here-blue)](./README_zh.md)
+[![中文](https://img.shields.io/badge/中文版本-Click%20Here-blue)](./README_zh.md)
+Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.
 
 ## What You'll Find Here🚀
 
