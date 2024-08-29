@@ -1,15 +1,15 @@
 # Welcome to My Blog🌟
 
-Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.🚀
+Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.
 
-## What You'll Find Here
+## What You'll Find Here🚀
 
 - **Work:** Updates on my professional endeavors and achievements.💼
 - **Projects:** Detailed posts about the projects I'm working on, including code, progress, and results.🛠️
 - **Life:** Personal reflections, experiences, and stories from my everyday life.🌿
 - **Tech:** Articles and tutorials on technology trends, programming tips, and tech-related topics.💻
 
-## How to Navigate
+## How to Navigate🔗
 
 - Browse the [Blog Posts](./posts) directory to read the latest entries.
 - Check out the [Projects](./projects) section for detailed project breakdowns.
@@ -18,11 +18,11 @@ Welcome to my personal blog on GitHub! This blog is where I share my work, proje
 
 ## Contributing
 
-If you have suggestions or would like to contribute, feel free to create an issue or submit a pull request. Your feedback and contributions are welcome!✉️
+If you have suggestions or would like to contribute, feel free to create an issue or submit a pull request. Your feedback and contributions are welcome!
 
 ## Contact
 
-For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com).✉️
+For any questions or feedback, you can reach me at ✉️ [theeast392@163.com](mailto:theeast392@163.com).
 
 ---
 
