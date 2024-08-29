@@ -4,37 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
-    <link >
+    <link rel="stylesheet" href="styles.css"> 
 </head>
+ <!-- 导航栏 -->
+ <nav class="navbar">
+    <a href="#">首页</a>
+    <a href="#">关于我</a>
+    <a href="#">联系</a>
+</nav>
+
+<!-- 博客标题 -->
+<header>
+    <h1>Welcome to my personal blog on GitHub!</h1>
+</header>
+
 <body>
-    <header>
-        <h1>我的个人博客</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="about.html">关于我</a></li>
-                <li><a href="archives.html">归档</a></li>
-                <li><a href="contact.html">联系我</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- 博客文章列表 -->
+<section class="post-list">
+    <article class="post-item">
+        <h2><a href="#">文章标题 1</a></h2>
+        <p>2024年8月29日 - 简短的文章摘要或者介绍内容...</p>
+    </article>
 
-    <main>
-        <h2>最新文章</h2>
-        <article>
-            <h3><a href="post1.html">文章标题一</a></h3>
-            <p>文章摘要一</p>
-        </article>
-        <article>
-            <h3><a href="post2.html">文章标题二</a></h3>
-            <p>文章摘要二</p>
-        </article>
-        </main>
+    <article class="post-item">
+        <h2><a href="#">文章标题 2</a></h2>
+        <p>2024年8月28日 - 另一篇文章的简短摘要内容...</p>
+    </article>
 
-    <footer>
-        <p>&copy; 2023 我的个人博客</p>
-    </footer>
+    <article class="post-item">
+        <h2><a href="#">文章标题 3</a></h2>
+        <p>2024年8月27日 - 更多文章内容的介绍和摘要...</p>
+    </article>
+</section>
 
-    <script src="script.js"></script>
+<!-- 页脚 -->
+<footer class="footer">
+    <p>© 2024 我的博客. 保留所有权利.</p>
+</footer>
 </body>
 </html>
