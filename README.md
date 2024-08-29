@@ -16,13 +16,13 @@ Welcome to my personal blog on GitHub! This blog is where I share my work, proje
 - Visit the [Tech Insights](./tech) section for tutorials and tech-related articles.
 - For personal updates, explore the [Life](./life) section.
 
-## Contributing
+## Contributing☎🎉
 
 If you have suggestions or would like to contribute, feel free to create an issue or submit a pull request. Your feedback and contributions are welcome!
 
-## Contact
+## Contact✉️
 
-For any questions or feedback, you can reach me at ✉️ [theeast392@163.com](mailto:theeast392@163.com).
+For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com).
 
 ---
 
