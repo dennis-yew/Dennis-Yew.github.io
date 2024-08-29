@@ -1,4 +1,4 @@
-# Welcome to My Blog🌟
+<h1 align="center">Welcome to My Blog🌟</h1>
 
 [![中文](https://img.shields.io/badge/中文版本-Click%20Here-blue)](./README_zh.md)
 
