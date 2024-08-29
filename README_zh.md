@@ -1,6 +1,6 @@
 # 欢迎来到我的博客🌟
 
-[![英文](https://img.shields.io/badge/英文-Click%20Here-blue)](./README.md)
+[![English](https://img.shields.io/badge/English-Click%20Here-blue)](./README.md)
 
 欢迎来到我的 GitHub 个人博客！我在此分享我的工作、项目、日常生活和技术见解。
 
