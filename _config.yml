@@ -1,0 +1,21 @@
+# _config.yml
+
+# Site settings
+title: My Jekyll Site
+description: A site that supports multiple languages.
+baseurl: "" # Base URL for the site, leave empty for root
+url: "https://example.com" # Your site URL
+
+# Language settings
+plugins:
+  - jekyll-multiple-languages-plugin
+
+languages:
+  - en
+  - zh
+
+default_lang: en
+
+# Build settings
+markdown: kramdown
+theme: minima
