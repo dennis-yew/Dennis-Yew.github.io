@@ -1,5 +1,5 @@
 # Welcome to My Blog🌟
-
+[![中文](https://img.shields.io/badge/中文版本-Click%20Here-blue)](./README_zh.md)
 Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.
 
 ## What You'll Find Here🚀
@@ -25,6 +25,5 @@ If you have suggestions or would like to contribute, feel free to create an issu
 For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com).
 
 ---
-[![中文](https://img.shields.io/badge/中文版本-Click%20Here-blue)](./README_zh.md)
 
 Happy reading and exploring!😊
