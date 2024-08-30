@@ -60,6 +60,7 @@ a:hover {
     text-decoration: underline;
 }
 
+
 /* 列表样式 */
 ul,
 ol {
@@ -125,9 +126,14 @@ th {
 
 /* 图片样式 */
 img {
-    max-width: 100%;
-    height: auto;
+    max-width: 100%; /* 图片宽度自适应父容器 */
+    height: auto;    /* 保持图片的纵横比 */
+    border-radius: 6px; /* 圆角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微的阴影 */
+    margin: 16px 0; /* 图片上下方的间距 */
+    display: block; /* 图片作为块级元素显示 */
 }
+
 
 /* 导航栏整体样式 */
 .navbar {
