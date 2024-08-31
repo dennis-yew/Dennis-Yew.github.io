@@ -134,6 +134,20 @@ img {
     display: block; /* 图片作为块级元素显示 */
 }
 
+.container {
+    width: 70%; /* 容器宽度占页面的90%，根据需要调整 */
+    max-width: 800px; /* 最大宽度限制，防止在大屏幕上过宽 */
+    margin: 0 auto; /* 居中对齐 */
+    padding: 16px; /* 内边距 */
+}
+/* 响应式调整 */
+@media (max-width: 600px) {
+    .container {
+        width: 75%; /* 小屏幕下容器稍微宽一点 */
+        padding: 8px; /* 减少内边距 */
+    }
+}
+
 
 /* 导航栏整体样式 */
 .navbar {

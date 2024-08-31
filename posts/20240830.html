@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post</title>
-    <link rel="stylesheet" href="posts.css"> 
+    <link rel="stylesheet" href="./posts.css"> 
 </head>
 <!-- 导航栏 -->
 <nav class="navbar">
@@ -21,9 +21,10 @@
 <body>
 <h1>GBDT 梯度提升树</h1>
 <p>梯度提升树的原理与残差拟合类似，就是先通过一棵树对模型进行拟合，拟合出来的结果与实际观测值会有残差。我们继续训练一棵新的树，去拟合这个残差。然后，我们将新树的预测结果与原来的模型预测结果相加，得到一个新的、更准确的预测结果。这里我给一个一元回归的残差分析例子</p> 
-<img src="./2024-08-30-2.png">
 
-
+<div class="container">
+    <img src="./2024-08-30-2.png">
+</div>
 
 <h2>决策树的基本原理</h2>
 <P>本质思维，考虑什么最重要，下一个是什么, 也就是给所有的因子划分重要的顺序, 这和赋予权重不太一样</P>
@@ -32,7 +33,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <div id="tree-chart"></div>
-<script src="/posts/20240830.js"></script>
+<script src="./20240830.js"></script>
 <h2>简单线性回归的残差分析</h2>
 <p>简单线性回归 有两个基本假设第一个基本假设是符合A + B X + e;第二个基本假设是,e的残差服从均值为零,方差为一个固定值的正态分布:N(0,o^2)</p>
 <p> 而所谓的残差，就 预测值与观测值之间的差， 也是公式中的e,因此残差检验的意义在于：检测第二步假设, 看到是否符合均值为零的正态分布</p>
