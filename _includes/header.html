@@ -1,0 +1,87 @@
+<header class="site-header">
+    <nav class="nav-container">
+        <a href="#" class="site-logo">Dennis-Yew</a>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+    /* Header Styles */
+    .site-header {
+
+        padding: 1rem;
+        background-color: #F8F9FA;
+        /* GitHub 的灰色背景色之一 */
+        border-bottom: 1px solid #E1E4E8;
+        /* GitHub 的分割线颜色 */
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-container {
+        display: flex;
+        max-width: 1100px;
+        margin: 0 auto;
+        justify-content: space-between;
+        /* 将主轴上的元素分隔开，并放置在两端 */
+        align-items: center;
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .site-logo {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #0366d6;
+        /* GitHub 的字体颜色 */
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #6b94b1;
+        /* GitHub 的链接颜色 */
+        font-weight: 600;
+    }
+
+    .nav-links a:hover {
+        color: #0366d6;
+        /* 鼠标悬停时颜色加深 */
+    }
+
+    /* ... 基础样式 ... */
+
+    @media (max-width: 1200px) {
+
+        /* 大屏设备 */
+        .nav-container {
+            max-width: 900px;
+        }
+    }
+
+
+
+    @media (max-width: 480px) {
+
+        /* 手机设备 */
+        .nav-container {
+            max-width: 320px;
+        }
+
+        .site-logo {
+            font-size: 1rem;
+        }
+    }
+</style>
