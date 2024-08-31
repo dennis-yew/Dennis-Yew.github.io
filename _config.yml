@@ -18,20 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: welcome to my blog
-email: theeast392@163.com
+title: Dennis-Yew
+email: 📧 theeast392@163.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-domain: dennis-yew.github.io         # 这是你的 GitHub Pages 主域名
-url: https://dennis-yew.github.io    # 这是完整的基础 URL
-baseurl: /Dennis-Yew                 # 如果你的站点被托管在子目录下，需要指定仓库名称
+  Technology changes life.
+domain: dennis-yew.github.io
+url: https://dennis-yew.github.io
+baseurl: /Dennis-Yew
 
-
-# baseurl: "" # the subpath of your site, e.g. /blog
-# url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: dennis-yew
 github_username:  dennis-yew
 
 # Build settings
@@ -39,6 +33,8 @@ theme: minima
 plugins:
   - jekyll-feed
 
+# maximum pages
+# paginate: 5
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
