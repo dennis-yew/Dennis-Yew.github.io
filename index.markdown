@@ -7,7 +7,7 @@ title:  "Welcome"
 ---
 ## Welcome to my personal blog⭐️
 
-Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.[Chinese](./posts/README_zh.md)
+Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.[Chinese](./posts/README_zh.html)
 
 - **Work:** Updates on my professional endeavors and achievements.💼
 - **Projects:** Detailed posts about the projects I'm working on, including code, progress, and results.🛠️
@@ -16,8 +16,7 @@ Welcome to my personal blog on GitHub! This blog is where I share my work, proje
 
 ## How to Navigate🔗
 
-- Browse the [Blog Posts](./projects) directory to read the latest entries.
-- Check out the [Projects](./projects) section for detailed project breakdowns.
+- Browse the [Blog Posts](./projects) directory to read the latest entries and detailed project breakdowns.
 - Visit the [Tech Insights](./tech) section for tutorials and tech-related articles.
 - For personal updates, explore the [Life](./life) section.
 
@@ -27,7 +26,7 @@ If you have suggestions or would like to contribute, feel free to create an issu
 
 ## Contact✉️
 
-For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com).
+For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com) and [github](https://github.com/dennis-yew)
 
 Happy reading and exploring!😊
 
