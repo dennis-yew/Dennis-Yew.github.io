@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "欢迎来到我的博客🌟"
 date:   2024-08-30 10:30:48 +0800
 categories: jekyll update
 ---
 
 
-# 欢迎来到我的博客🌟
+
 
 [![English](https://img.shields.io/badge/English-Click%20Here-blue)](..README.md)
 
