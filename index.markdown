@@ -17,7 +17,7 @@ Welcome to my personal blog on GitHub! This blog is where I share my work, proje
 ## How to Navigate🔗
 
 - Browse the [Blog Posts](./post) directory to read the latest entries and detailed project breakdowns.
-- Review the [Projects] (./projects) section for a detailed breakdown of the project.
+- Review the [Projects](./projects) section for a detailed breakdown of the project.
 - Visit the [Tech Insights](./tech) section for tutorials and tech-related articles.
 - For personal updates, explore the [Life](./life) section.
 
