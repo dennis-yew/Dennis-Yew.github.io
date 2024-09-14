@@ -9,6 +9,5 @@
     </li>
   {% endfor %}
 </ul>
-<ul>
-  I developed a [mine game](./assets/mine.html), please come and give it a try～
-</ul>
+
+- I developed a [mine game](./assets/mine.html), please come and give it a try～
