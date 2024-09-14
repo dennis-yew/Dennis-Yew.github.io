@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MineSweeper</title>
+    <style>
+        /* 通用样式 */
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #c0c0c0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #000;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        #game-container {
+            background-color: #d4d0c8;
+            padding: 10px;
+            border: 2px solid #808080;
+            box-shadow: 3px 3px 0 #fff inset, -3px -3px 0 #808080 inset;
+        }
+
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(27, 30px); /* 5x5网格 */
+            grid-gap: 2px;
+            background-color: #808080;
+            padding: 5px;
+        }
+
+        .cell {
+            width: 30px;
+            height: 30px;
+            background-color: #c0c0c0;
+            border: 2px solid #d4d0c8;
+            box-shadow: inset -2px -2px 0 #808080, inset 2px 2px 0 #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            cursor: pointer;
+            color: black;
+        }
+
+        .cell.revealed {
+            background-color: #d4d0c8;
+            box-shadow: none;
+            border: 1px solid #808080;
+            color: black;
+            cursor: default;
+        }
+
+        .mine {
+            background-color: red;
+            font-size: 20px;
+        }
+
+        .revealed .mine {
+            background-color: #d4d0c8;
+        }
+
+        .revealed .mine::before {
+            content: "💣";
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* 立体按钮效果 */
+        .cell:active {
+            box-shadow: none;
+            border: 1px solid #808080;
+        }
+
+        /* 数字颜色（类似Windows 7扫雷） */
+        .revealed[data-nearby="1"] {
+            color: blue;
+        }
+
+        .revealed[data-nearby="2"] {
+            color: green;
+        }
+
+        .revealed[data-nearby="3"] {
+            color: red;
+        }
+
+        .revealed[data-nearby="4"] {
+            color: navy;
+        }
+
+        .revealed[data-nearby="5"] {
+            color: brown;
+        }
+
+        .revealed[data-nearby="6"] {
+            color: turquoise;
+        }
+
+        .revealed[data-nearby="7"] {
+            color: black;
+        }
+
+        .revealed[data-nearby="8"] {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Landmines</h1>
+    <div id="game-board"></div>
+    <p id="status"></p>
+
+    <script>
+        const rows = 16;
+        const cols = 27;
+
+        // 静态的布雷情况（1代表地雷，0代表没有雷）
+        const mineMap = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+
+        ];
+
+        // 初始化游戏
+        function initGame() {
+            const gameBoard = document.getElementById('game-board');
+            gameBoard.innerHTML = ''; // 清空游戏板
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    cell.dataset.row = r;
+                    cell.dataset.col = c;
+
+                    // 点击事件处理
+                    cell.addEventListener('click', () => handleCellClick(r, c, cell));
+
+                    gameBoard.appendChild(cell);
+                }
+            }
+        }
+
+        // 点击方格事件处理
+        function handleCellClick(row, col, cell) {
+            if (mineMap[row][col] === 1) {
+                revealMines();
+                document.getElementById('status').textContent = 'The moment You shown up, My world turned upside down!';
+                return;
+            }
+
+            const minesNearby = countMinesNearby(row, col);
+            cell.textContent = minesNearby > 0 ? minesNearby : '';
+            cell.classList.add('revealed');
+            cell.removeEventListener('click', handleCellClick); // 禁用点击
+
+            // 若点击的是没有雷数的方格，自动揭示周围空白
+            if (minesNearby === 0) {
+                revealAdjacentCells(row, col);
+            }
+        }
+
+        // 统计周围雷数
+        function countMinesNearby(row, col) {
+            let mineCount = 0;
+
+            for (let r = -1; r <= 1; r++) {
+                for (let c = -1; c <= 1; c++) {
+                    const newRow = row + r;
+                    const newCol = col + c;
+                    if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && mineMap[newRow][newCol] === 1) {
+                        mineCount++;
+                    }
+                }
+            }
+
+            return mineCount;
+        }
+
+        // 当点击到空白区域时，自动揭示相邻空白格
+        function revealAdjacentCells(row, col) {
+            for (let r = -1; r <= 1; r++) {
+                for (let c = -1; c <= 1; c++) {
+                    const newRow = row + r;
+                    const newCol = col + c;
+
+                    if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
+                        const adjacentCell = document.querySelector(`.cell[data-row='${newRow}'][data-col='${newCol}']`);
+
+                        if (!adjacentCell.classList.contains('revealed')) {
+                            handleCellClick(newRow, newCol, adjacentCell);
+                        }
+                    }
+                }
+            }
+        }
+
+        // 显示所有地雷
+        function revealMines() {
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    if (mineMap[r][c] === 1) {
+                        const mineCell = document.querySelector(`.cell[data-row='${r}'][data-col='${c}']`);
+                        mineCell.classList.add('mine');
+                        mineCell.textContent = '💣';
+                    }
+                }
+            }
+        }
+
+        // 初始化游戏
+        initGame();
+    </script>
+</body>
+</html>
