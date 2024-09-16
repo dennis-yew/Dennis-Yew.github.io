@@ -1,4 +1,5 @@
 
 
 
-- I developed a [mine game](./mine.html), please come and give it a try～
+- I developed a [mine game](/Projects/mine.html), please come and give it a try～
+- An interesting web [page](/Projects/mylove.html) style to show my love

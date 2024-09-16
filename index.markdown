@@ -27,7 +27,7 @@ If you have suggestions or would like to contribute, feel free to create an issu
 
 ## Contact✉️
 
-For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com) and [github](https://github.com/dennis-yew)
+For any questions or feedback, you can reach me at [theeast392@163.com](mailto:theeast392@163.com) and github [Dennis-Yew](https://github.com/dennis-yew)
 
 Happy reading and exploring!😊
 
