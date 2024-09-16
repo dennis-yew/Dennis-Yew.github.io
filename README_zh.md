@@ -1,7 +1,7 @@
 
 # 欢迎来到我的博客⭐️
 
-[![English](https://img.shields.io/badge/English-Click%20Here-blue)](..README.md)
+[![English](https://img.shields.io/badge/English-Click%20Here-blue)](/README.md)
 
 欢迎来到我的 GitHub 个人博客！我在此分享我的工作、项目、日常生活和技术见解。
 
@@ -16,8 +16,8 @@
 
 - 浏览 [博客文章](./posts/main.html) 目录以阅读最新条目。
 - 查看 [项目](./projects) 部分以了解详细的项目细分。
-- 访问 [Tech Insights](./tech) 部分，查看教程和技术相关文章。
-- 如需个人更新，请浏览 [Life](./life) 部分。
+- 访问 [技术](./tech) 部分，查看教程和技术相关文章。
+- 如需个人更新，请浏览 [生活](./life) 部分。
 
 ## 贡献🎉
 

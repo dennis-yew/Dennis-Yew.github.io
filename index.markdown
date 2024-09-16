@@ -7,7 +7,7 @@ title:  "Welcome"
 ---
 ## Welcome to my personal blog⭐️
 
-Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.[Chinese](./posts/README_zh.html)
+Welcome to my personal blog on GitHub! This blog is where I share my work, projects, daily life, and technology insights.[Chinese](./README_zh.html)
 
 - **Work:** Updates on my professional endeavors and achievements.💼
 - **Projects:** Detailed posts about the projects I'm working on, including code, progress, and results.🛠️
@@ -16,10 +16,10 @@ Welcome to my personal blog on GitHub! This blog is where I share my work, proje
 
 ## How to Navigate🔗
 
-- Browse the [Blog Posts](./post) directory to read the latest entries and detailed project breakdowns.
-- Review the [Projects](./projects) section for a detailed breakdown of the project.
-- Visit the [Tech Insights](./tech) section for tutorials and tech-related articles.
-- For personal updates, explore the [Life](./life) section.
+- Browse the [Blog Posts](/posts) directory to read the latest entries and detailed project breakdowns.
+- Review the [Projects](/projects) section for a detailed breakdown of the project.
+- Visit the [Tech Insights](/tech) section for tutorials and tech-related articles.
+- For personal updates, explore the [Life](/life) section.
 
 ## Contributing🎉
 
