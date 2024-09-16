@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Technology changes life.
 domain: dennis-yew.github.io
 url: https://dennis-yew.github.io
-baseurl: /
+baseurl: Dennis-Yew.github.io
 
 github_username:  dennis-yew
 
