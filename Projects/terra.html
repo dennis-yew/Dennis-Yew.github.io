@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Row Sprite Animation</title>
+    <style>
+        body,
+        html {
+            background-color: bisque;
+            height: 100%;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            /* 水平和垂直居中 */
+        }
+        h1{
+            font-family: 'PixelFont', monospace; /* 使用像素字体 */
+            font-size: 60px;
+            color: rgb(172, 100, 12);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 #000, 4px 4px 0 rgb(176, 119, 50); /* 模拟粗糙的像素边缘 */
+            animation: pixelEffect 1s steps(5) infinite; /* 像素风格动画 */
+        }
+        /* 全屏容器 */
+        .main {
+            height: 50%;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            /* 水平和垂直居中 */
+        }
+        h1 {
+            margin: 0;
+        }
+
+        /* 按钮样式 */
+        #sprite-container button {
+            position: absolute;
+            /* 绝对定位 */
+
+            width: 318px;
+            /* 每帧的宽度 */
+            height: 293px;
+            /* 每帧的高度 */
+            border: none;
+            /* 去掉按钮边框 */
+            padding: 10px 20px;
+            /* 按钮内边距 */
+            cursor: pointer;
+            /* 鼠标悬停变成手型 */
+            opacity: 0;
+            /* 默认隐藏按钮 */
+            transition: opacity 0.3s ease;
+            /* 过渡效果 */
+        }
+
+        /* 定义容器的样式 */
+        #sprite-container {
+            position: relative;
+            width: 318px;
+            /* 每帧的宽度 */
+            height: 293px;
+            /* 每帧的高度 */
+            overflow: hidden;
+            /* 隐藏溢出的部分 */
+        }
+
+        /* 精灵帧的背景图片 */
+        #sprite {
+            position: absolute;
+            width: 1590px;
+            /* 精灵图的总宽度 */
+            height: 586px;
+            /* 精灵图的总高度 */
+            background-image: url('/assets/img/terra.png');
+            /* 替换为你的精灵图路径 */
+            background-repeat: no-repeat;
+
+        }
+
+        /* 第一组动作，播放精灵图的第一行 */
+        @keyframes playAction1 {
+            0% {
+                background-position: 0px 0px;
+            }
+
+            /* 第一帧 */
+            20% {
+                background-position: -318px 0px;
+            }
+
+            /* 第二帧 */
+            40% {
+                background-position: -636px 0px;
+            }
+
+            /* 第三帧 */
+            60% {
+                background-position: -954px 0px;
+            }
+
+            /* 第四帧 */
+            80% {
+                background-position: -1272px 0px;
+            }
+
+            /* 第五帧 */
+            100% {
+                background-position: 0px 0px;
+            }
+
+            /* 回到第一帧 */
+        }
+
+        /* 第二组动作，播放精灵图的第二行 */
+        @keyframes playAction2 {
+            0% {
+                background-position: 0px -293px;
+            }
+
+            /* 第一帧 */
+            25% {
+                background-position: -318px -293px;
+
+            }
+
+            /* 第二帧 */
+            50% {
+
+                background-position: -636px -293px;
+
+            }
+
+            /* 第三帧 */
+            75% {
+
+                background-position: -954px -293px;
+            }
+
+            /* 第四帧 */
+            100% {
+                background-position: 0px -293px;
+
+            }
+
+            /* 回到第一帧 */
+        }
+
+        /* 初始动画状态 */
+        .playDefault {
+            animation: playAction2 3s steps(1) infinite;
+        }
+
+        .playAnimation1 {
+            /* 单次执行 */
+            animation: playAction1 3s steps(1) forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Terra</h1>
+        <div id="sprite-container">
+            <div id="sprite" class="playDefault"></div> <!-- 精灵帧 -->
+            <button onclick="playAction1()">
+                
+                
+            </button>
+            
+        </div>
+    </div>
+        
+
+
+    <script>
+        function playAction1() {
+            const sprite = document.getElementById('sprite');
+            sprite.classList.remove('playDefault'); // 确保移除其他动画类
+            sprite.classList.add('playAnimation1'); // 添加第一组动作的动画类
+            // 监听动画结束事件
+            sprite.addEventListener('animationend', onAction1End, { once: true });
+        }
+
+        // 重新启动动画
+        function onAction1End() {
+            sprite.classList.remove('playAnimation1'); // 先移除类
+
+            sprite.classList.add('playDefault'); // 再添加类
+        }
+    </script>
+</body>
+
+</html>
