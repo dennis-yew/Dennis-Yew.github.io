@@ -279,3 +279,55 @@ td {
     border-color: #0071e3;
     outline: none;
 }
+
+/* 为滑块添加样式 */
+input[type="range"] {
+    -webkit-appearance: none;
+    /* 移除默认样式 */
+    width: 50%;
+    /* 设置滑块宽度 */
+    height: 6px;
+    /* 滑块轨道的高度 */
+    background: #d0d0d0;
+    /* 滑块轨道颜色 */
+    border-radius: 5px;
+    /* 圆角轨道 */
+    outline: none;
+    /* 移除焦点时的边框 */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* 移除默认样式 */
+    appearance: none;
+    width: 16px;
+    /* 滑块的宽度 */
+    height: 16px;
+    /* 滑块的高度 */
+    background: #007aff;
+    /* 滑块的颜色，类似Apple的蓝色 */
+    border-radius: 50%;
+    /* 圆形滑块 */
+    cursor: pointer;
+    /* 鼠标悬停时显示手形光标 */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    /* 为滑块添加阴影 */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #007aff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+input[type="range"]::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    background: #007aff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
