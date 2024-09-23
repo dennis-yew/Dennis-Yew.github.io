@@ -8,7 +8,7 @@
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=HAYmM0PH"></script>
 </head>
 <link rel="stylesheet" href="/assets/css/core.css">
-<script src="/assets/js/speaker.js"></script>
+<script src="/assets/js/reader.js"></script>
 <script>
     function getSelectionText() {
         var text = "";
@@ -31,17 +31,22 @@
 </script>
 
 <body>
+    <header>
+        <h1>Welcome to try the reader</h1>
+    </header>
+    <form id="speechForm"></form>
+        <textarea id="textInput" placeholder="在这里输入你想阅读的文本..." rows="6"></textarea>
 
+        <!-- 添加语音选择下拉菜单 -->
+        <select id="voiceSelect">
+            <option value="US English Female">美式英语 - 女性</option>
+            <option value="UK English Female">英式英语 - 女性</option>
+            <option value="US English Male">美式英语 - 男性</option>
+            <option value="UK English Male">英式英语 - 男性</option>
+        </select>
 
-    <main>
-        <section class="speech-section">
-            <h2>Enter text and read</h2>
-            <form id="speechForm">
-                <textarea id="textInput" placeholder="Enter text here..." rows="6"></textarea>
-                <button type="submit">Read</button>
-            </form>
-        </section>
-    </main>
+        <button type="submit">阅读文本</button>
+    </form>
 
 </body>
 
