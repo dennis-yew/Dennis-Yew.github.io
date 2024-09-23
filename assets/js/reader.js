@@ -14,11 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
             alert("请输入你想阅读的文本！");
             return;
         }
-
         // 获取选定的语音类型
         const selectedVoice = voiceSelect.value;
 
-        // 使用 ResponsiveVoice 朗读文本
-        responsiveVoice.speak(text, selectedVoice);
+        // 检查 ResponsiveVoice 是否支持所选语音
+        if (responsiveVoice.voiceSupport(selectedVoice)) {
+            // 使用 ResponsiveVoice 朗读文本
+            responsiveVoice.speak(text, selectedVoice);
+        } else {
+            alert("所选的语音不受支持。请选择其他语音。");
+        }
     });
 });
