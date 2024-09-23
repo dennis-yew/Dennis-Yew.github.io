@@ -53,7 +53,9 @@ a:hover {
     color: #005bb5;
     /* 鼠标悬停时稍微加深颜色 */
 }
-
+main{
+    width: 70%;
+}
 /* 按钮样式 */
 button {
     background-color: #0071e3;
