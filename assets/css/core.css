@@ -281,6 +281,10 @@ td {
 }
 
 /* 为滑块添加样式 */
+label{
+    margin: 10px;
+}
+
 input[type="range"] {
     -webkit-appearance: none;
     /* 移除默认样式 */
