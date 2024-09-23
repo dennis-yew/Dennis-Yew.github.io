@@ -9,6 +9,27 @@
 </head>
 <link rel="stylesheet" href="/assets/css/core.css">
 <script src="/assets/js/speaker.js"></script>
+<script>
+    function getSelectionText() {
+        var text = "";
+        if (window.getSelection) {
+            text = window.getSelection().toString();
+            // for Internet Explorer 8 and below. For Blogger, you should use &amp;&amp; instead of &&.
+        } else if (document.selection && document.selection.type != "Control") {
+            text = document.selection.createRange().text;
+        }
+        return text;
+    }
+    $(document).ready(function () { // when the document has completed loading
+        $(document).mouseup(function (e) { // attach the mouseup event for all div and pre tags
+            setTimeout(function () { // When clicking on a highlighted area, the value stays highlighted until after the mouseup event, and would therefore stil be captured by getSelection. This micro-timeout solves the issue. 
+                responsiveVoice.cancel(); // stop anything currently being spoken
+                responsiveVoice.speak(getSelectionText()); //speak the text as returned by getSelectionText
+            }, 1);
+        });
+    });
+</script>
+
 <body>
 
 
@@ -16,7 +37,7 @@
         <section class="speech-section">
             <h2>Enter text and read</h2>
             <form id="speechForm">
-                <textarea id="textInput" placeholder="在这里输入你想阅读的文本..." rows="6"></textarea>
+                <textarea id="textInput" placeholder="Enter text here..." rows="6"></textarea>
                 <button type="submit">Read</button>
             </form>
         </section>
