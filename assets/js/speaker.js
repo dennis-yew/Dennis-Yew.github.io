@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // 选择语音类型：美式英语 'US English Female' 或 英式英语 'UK English Female'
-        const selectedVoice = 'US English Male'; // 你可以根据需要更改
+        const selectedVoice = 'UK English Male'; // 你可以根据需要更改
 
         // 使用 ResponsiveVoice 朗读文本
         responsiveVoice.speak(text, selectedVoice);
