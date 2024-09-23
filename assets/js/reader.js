@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     speechForm.addEventListener('submit', function (event) {
         event.preventDefault(); // 防止表单默认提交行为
 
-        const text = textInput.value.trim();
+        const text = textInput.value.replace(/\n/g, '');
         const selectedVoice = voiceSelect.value;
         const selectedRate = parseFloat(speedRange.value);
 
