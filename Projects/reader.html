@@ -8,35 +8,16 @@
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=HAYmM0PH"></script>
 </head>
 <link rel="stylesheet" href="/assets/css/core.css">
-<!-- <script src="/assets/js/reader.js"></script> -->
-<script src="/assets/js/sta.js"></script>
+<script src="/assets/js/reader.js"></script>
+<!-- <script src="/assets/js/sta.js"></script> -->
 
-<script>
-    function getSelectionText() {
-        var text = "";
-        if (window.getSelection) {
-            text = window.getSelection().toString();
-            // for Internet Explorer 8 and below. For Blogger, you should use &amp;&amp; instead of &&.
-        } else if (document.selection && document.selection.type != "Control") {
-            text = document.selection.createRange().text;
-        }
-        return text;
-    }
-    $(document).ready(function () { // when the document has completed loading
-        $(document).mouseup(function (e) { // attach the mouseup event for all div and pre tags
-            setTimeout(function () { // When clicking on a highlighted area, the value stays highlighted until after the mouseup event, and would therefore stil be captured by getSelection. This micro-timeout solves the issue. 
-                responsiveVoice.cancel(); // stop anything currently being spoken
-                responsiveVoice.speak(getSelectionText()); //speak the text as returned by getSelectionText
-            }, 1);
-        });
-    });
-</script>
+
 
 <body>
     <header>
         <h1>Welcome to try the reader</h1>
     </header>
-<!-- 
+
     <main>
         <section class="speech-section">
 
@@ -52,8 +33,8 @@
             <button type="submit">Read</button>
             </form>
         </section>
-    </main> -->
-    <main>
+    </main>
+    <!-- <main>
         <section class="speech-section">
             <h2>输入文本并阅读</h2>
             <form id="speechForm">
@@ -61,7 +42,7 @@
                 <button type="submit">阅读文本</button>
             </form>
         </section>
-    </main>
+    </main> -->
 
 </body>
 
