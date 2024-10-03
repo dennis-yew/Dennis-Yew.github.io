@@ -62,8 +62,8 @@
     z-index: 1000;    /* 确保在其他内容上方 */"></div>
     <div class="button-container">
         <button onclick="switchModel('xgw')">模型 1</button>
-        <button onclick="switchModel('xinhai')">模型 2</button>
-        <button onclick="switchModel('lxz')">模型 3</button>
+        <button onclick="switchModel('anotherModel')">模型 2</button>
+        <button onclick="switchModel('anotherModel2')">模型 3</button>
 
     </div>
 
@@ -79,7 +79,7 @@
                 skin: "default",
                 skins: ["default"]
             },
-            xinhai: {
+            anotherModel: {
                 skeleton: "/assets/js/Xinhai.json",
                 atlas: "/assets/js/Xinhai.atlas",
                 animation: "loop",
@@ -89,7 +89,7 @@
 
 
             },
-            lxz: {
+            anotherModel2: {
                 skeleton: "/assets/js/lxz.json",
                 atlas: "/assets/js/lxz.atlas",
                 animation: "loop",
@@ -112,7 +112,7 @@
                 skeleton: modelConfig.skeleton,
                 atlas: modelConfig.atlas,
                 imagesPath: modelConfig.imagesPath,
-                // loop: true, // 循环播放
+                loop: true, // 循环播放
                 animation: modelConfig.animation,
                 animations: modelConfig.animations,
                 showControls: false,
@@ -126,28 +126,18 @@
                 }
             });
         }
-
-
-
-        // ######
         let currentAnimationIndex = 0; // 当前动画索引
 
 
         // 点击模型改变动画的函数
         function changeAnimation() {
-
             // 更新当前动画索引
-            console.log(currentPlayer);
-            currentAnimationIndex = (currentAnimationIndex + 1) % currentPlayer.config.animations.length;
-            const newAnimation = currentPlayer.config.animations[currentAnimationIndex]; // 获取新的动画名称
-            console.log(newAnimation);
+            currentAnimationIndex = (currentAnimationIndex + 1) % modelConfig.animations.length;
+            const newAnimation = modelConfig.animations[currentAnimationIndex]; // 获取新的动画名称
+
             // 使用 addAnimation 切换到新的动画
-            currentPlayer.animationState.setAnimation(0, newAnimation, false); // 第一个参数为 trackIndex，设为 0 代表第一个轨道
+            currentPlayer.addAnimation(0, newAnimation, true, 0); // 第一个参数为 trackIndex，设为 0 代表第一个轨道
         }
-
-        // ########
-
-
 
 
         // 切换模型的函数
@@ -161,23 +151,24 @@
         }
 
 
-        // 默认加载模型及其默认动画
-        window.onload = function () {
-            switchModel('lxz'); // 页面加载时默认显示模型3
-            
-            // 事件监听
-            const div_canvas = document.querySelector("#player-container");
-            console.log(div_canvas); // 检查 canvas 是否被找到
+        // DOMContentLoaded 事件监听
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvas = document.querySelector(".spine-player-canvas");
+            console.log(canvas); // 检查 canvas 是否被找到
 
-            if (div_canvas) { // 确保 canvas 元素存在
-                div_canvas.addEventListener("click",() => {
-            // 在这里调用 changeAnimation 函数，传入 modelConfig
-            changeAnimation();
+            if (canvas) { // 确保 canvas 元素存在
+                canvas.addEventListener("click", changeAnimation); // 添加点击事件
+            } else {
+                console.error("Canvas 元素未找到");
+            }
+
+            currentPlayer.setAnimation(modelConfig.defaultAnimation, true); 
         });
-    } else {
-        console.error("Canvas的div 元素未找到");
-    }
-};
+        
+        // 默认加载第一个模型
+        window.onload = function() {
+            loadModel('xgw'); // 页面加载时默认显示 xgw 模型
+        };
     </script>
 </body>
 
