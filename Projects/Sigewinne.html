@@ -27,8 +27,8 @@
             height: 30%;
             position: fixed;
             /* 固定定位 */
-            left: -30px;
-            /* 左侧对齐 */
+            left: -10px;
+            /* 画布左侧对齐 */
             bottom: 5px;
             /* 底部对齐 */
             z-index: 1000;
@@ -152,7 +152,7 @@
             const newAnimation = currentPlayer.config.animations[currentAnimationIndex]; // 获取新的动画名称
             console.log(newAnimation);
             // 使用 addAnimation 切换到新的动画
-            currentPlayer.animationState.setAnimation(0, newAnimation, false); // 第一个参数为 trackIndex，设为 0 代表第一个轨道
+            currentPlayer.animationState.setAnimation(0, newAnimation, true); // 第一个参数为 trackIndex，设为 0 代表第一个轨道
         }
 
         // ########
