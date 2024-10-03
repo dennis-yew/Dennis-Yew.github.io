@@ -63,6 +63,7 @@
     <div class="button-container">
         <button onclick="switchModel('xgw')">模型 1</button>
         <button onclick="switchModel('anotherModel')">模型 2</button>
+        <button onclick="switchModel('anotherModel2')">模型 3</button>
 
     </div>
 
@@ -73,10 +74,26 @@
             xgw: {
                 skeleton: "/assets/js/xgw.json",
                 atlas: "/assets/js/xgw.atlas",
+                animation: "loop",
+                skin: "default",
+                skins: ["default"]
             },
             anotherModel: {
                 skeleton: "/assets/js/Xinhai.json",
                 atlas: "/assets/js/Xinhai.atlas",
+                animation: "loop",
+                skin: "default",
+                skins: ["default"] 
+
+
+            },
+            anotherModel2: {
+                skeleton: "/assets/js/lxz.json",
+                atlas: "/assets/js/lxz.atlas",
+                animation: "loop",
+                animations: ["loop","s","walk"] ,
+                skin: "1",
+                skins: ["1","2","3","4","5"] 
             }
         };
         // 加载模型的函数
@@ -93,8 +110,10 @@
                 atlas: modelConfig.atlas,
                 imagesPath: modelConfig.imagesPath,
                 loop: true, // 循环播放
-                animation: "loop",
+                animation: modelConfig.animation,
                 showControls: false,
+                skin: modelConfig.skin,
+                skins: modelConfig.skins,
                 alpha: true, // Enable player translucency
                 backgroundColor: "#00000000", // Background is fully transparent
                 viewport: {
