@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Spine Animation</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 创建一个容器来放置两个按钮 */
+        .button-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            /* 按钮之间的间距，可以根据需要调整 */
+            z-index: 1000;
+        }
+
+        /* 按钮的样式 */
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <script src="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/iife/spine-player.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.css">
+
+    <div id="player-container" style="width: 100%; height: 100vh;"></div>
+    <div class="button-container">
+        <button onclick="switchModel('xgw')">模型 1</button>
+        <button onclick="switchModel('anotherModel')">模型 2</button>
+
+    </div>
+
+    <script>
+        let currentPlayer = null; // 存储当前的 SpinePlayer 实例
+        // 模型数据配置
+        const models = {
+            xgw: {
+                skeleton: "/assets/js/xgw.json",
+                atlas: "/assets/js/xgw.atlas",
+            },
+            anotherModel: {
+                skeleton: "/assets/js/Xinhai.json",
+                atlas: "/assets/js/Xinhai.atlas",
+            }
+        };
+        // 加载模型的函数
+        function loadModel(modelConfig) {
+            // 如果有当前的模型实例，先销毁它
+            if (currentPlayer) {
+                currentPlayer.dispose(); // 释放当前模型的资源
+                currentPlayer = null; // 清空引用
+            }
+            // 创建新的 SpinePlayer 实例
+            currentPlayer = new spine.SpinePlayer("player-container", {
+                skeleton: modelConfig.skeleton,
+                atlas: modelConfig.atlas,
+                imagesPath: modelConfig.imagesPath,
+                loop: true, // 循环播放
+                animation: "loop",
+                autoplay: true  // 自动开始播放
+            });
+        }
+        // 切换模型的函数
+        function switchModel(modelKey) {
+            const modelConfig = models[modelKey];
+            if (modelConfig) {
+                loadModel(modelConfig); // 加载对应模型
+            } else {
+                console.error("模型未找到: " + modelKey);
+            }
+        }
+
+        // 默认加载第一个模型
+        window.onload = function () {
+            switchModel('xgw'); // 页面加载时默认显示模型1
+        };
+    </script>
+</body>
+
+</html>
