@@ -22,6 +22,19 @@
             height: 50%;
         }
 
+        #player-container {
+            width: 30%;
+            height: 30%;
+            position: fixed;
+            /* 固定定位 */
+            left: -30px;
+            /* 左侧对齐 */
+            bottom: 5px;
+            /* 底部对齐 */
+            z-index: 1000;
+            /* 确保在其他内容上方 */
+        }
+
         /* 创建一个容器来放置两个按钮 */
         .button-container {
             position: fixed;
@@ -56,10 +69,7 @@
     <script src="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/iife/spine-player.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.css">
 
-    <div id="player-container" style="width: 30%; height: 30%;            position: fixed;   /* 固定定位 */
-    left: 0;          /* 左侧对齐 */
-    bottom: 0;        /* 底部对齐 */
-    z-index: 1000;    /* 确保在其他内容上方 */"></div>
+    <div id="player-container"></div>
     <div class="button-container">
         <button onclick="switchModel('xgw')">模型 1</button>
         <button onclick="switchModel('xinhai')">模型 2</button>
@@ -112,7 +122,7 @@
                 skeleton: modelConfig.skeleton,
                 atlas: modelConfig.atlas,
                 imagesPath: modelConfig.imagesPath,
-                // loop: true, // 循环播放
+                loop: true, // 循环播放
                 animation: modelConfig.animation,
                 animations: modelConfig.animations,
                 showControls: false,
@@ -164,20 +174,20 @@
         // 默认加载模型及其默认动画
         window.onload = function () {
             switchModel('lxz'); // 页面加载时默认显示模型3
-            
+
             // 事件监听
             const div_canvas = document.querySelector("#player-container");
             console.log(div_canvas); // 检查 canvas 是否被找到
 
             if (div_canvas) { // 确保 canvas 元素存在
-                div_canvas.addEventListener("click",() => {
-            // 在这里调用 changeAnimation 函数，传入 modelConfig
-            changeAnimation();
-        });
-    } else {
-        console.error("Canvas的div 元素未找到");
-    }
-};
+                div_canvas.addEventListener("click", () => {
+                    // 在这里调用 changeAnimation 函数，传入 modelConfig
+                    changeAnimation();
+                });
+            } else {
+                console.error("Canvas的div 元素未找到");
+            }
+        };
     </script>
 </body>
 
