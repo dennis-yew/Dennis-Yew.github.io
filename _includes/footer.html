@@ -38,26 +38,11 @@
         let oml2d;
         let expressions; // 存储模型表情的数组
 
-        // 载入 Live2D 模型
         function loadLive2DModel() {
-            // 事件监听
+            // 载入 Live2D 模型
+
             oml2d = OML2D.loadOml2d({
                 models: [
-                    {
-                        path: '/assets/model/klee/klee.model3.json',
-                        position: [20, 40],
-                        scale: 0.06,
-                        stageStyle: {
-                            height: 250,
-                            width: 250
-                        },
-                        mobilePosition: [10, 4],
-                        mobileScale: 0.04,
-                        mobileStageStyle:{
-                            height: 150,
-                            width: 150
-                        }
-                    },
                     {
                         path: '/assets/model/Nahida1/Nahida_1080.model3.json',//大慈树王
                         position: [20, 60],
@@ -68,7 +53,7 @@
                         },
                         mobilePosition: [10, 30],
                         mobileScale: 0.04,
-                        mobileStageStyle:{
+                        mobileStageStyle: {
                             height: 250,
                             width: 200,
                         },
@@ -85,20 +70,20 @@
                     // },
                     {
                         path: '/assets/model/Nahida2/草神.model3.json',
-                        position: [5, 40],
-                        scale: 0.1,
+                        position: [10, 60],
+                        scale: 0.047,
                         stageStyle: {
-                            height: 180,
-                            width: 150
+                            height: 300,
+                            width: 270
                         },
                         mobilePosition: [20, 50],
                         mobileScale: 0.037,
-                        mobileStageStyle:{
+                        mobileStageStyle: {
                             height: 250,
                             width: 200
                         },
 
-                    }, 
+                    },
                     {
                         path: '/assets/model/Furina/Furina.model3.json',
                         position: [20, 90],
@@ -107,12 +92,26 @@
                             height: 300,
                             width: 250
                         },
-                        mobilePosition: [10, 4],
+                        mobilePosition: [10, 50],
                         mobileScale: 0.05,
-                        mobileStageStyle:{
-                            height: 150,
+                        mobileStageStyle: {
+                            height: 200,
                             width: 150
                         },
+                    }, {
+                        path: '/assets/model/klee/klee.model3.json',
+                        position: [20, 40],
+                        scale: 0.06,
+                        stageStyle: {
+                            height: 250,
+                            width: 250
+                        },
+                        mobilePosition: [10, 50],
+                        mobileScale: 0.04,
+                        mobileStageStyle: {
+                            height: 200,
+                            width: 150
+                        }
                     },
                 ]
             });
@@ -123,10 +122,13 @@
             const omlcanvas = document.querySelector("#oml2d-canvas");
 
             if (omlcanvas) { // 确保 canvas 元素存在
-                omlcanvas.addEventListener("click", () => {
-                    // 在这里调用 switchRandomExpression 函数，传入 modelConfig
+                // 在这里调用 switchRandomExpression 函数，传入 modelConfig
+                omlcanvas.addEventListener("click", switchRandomExpression);
+                // 监听 touchstart 事件
+                omlcanvas.addEventListener('touchstart', function(event) {
                     switchRandomExpression();
-                });
+            // 阻止 touch 事件后触发 click 事件
+            event.preventDefault()});
             } else {
                 console.error("omlcanvas 元素未找到");
             }
@@ -153,7 +155,7 @@
                 console.log('randomIndex:', randomIndex);
                 console.log('randomExpression:', randomExpression);
                 model.motionManager.expressionManager.setExpression(randomIndex)
-            }else{
+            } else {
                 console.log('expressions is empty');
             }
         }
