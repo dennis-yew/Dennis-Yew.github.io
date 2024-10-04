@@ -1,0 +1,68 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "klee.moc3",
+		"Textures": [
+			"textures/texture_00.png",
+			"textures/texture_01.png",
+			"textures/texture_02.png",
+			"textures/texture_03.png",
+			"textures/texture_04.png",
+			"textures/texture_05.png",
+			"textures/texture_06.png"
+		],
+		"Physics": "klee.physics3.json",
+		"DisplayInfo": "klee.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "expression1",
+				"File": "expressions/shengqi.exp3.json"
+			},
+			{
+				"Name": "expression2",
+				"File": "expressions/maozi.exp3.json"
+			},
+			{
+				"Name": "expression3",
+				"File": "expressions/maomao.exp3.json"
+			},
+			{
+				"Name": "expression4",
+				"File": "expressions/quanquan.exp3.json"
+			},
+			{
+				"Name": "expression5",
+				"File": "expressions/xingxing.exp3.json"
+			},
+			{
+				"Name": "expression6",
+				"File": "expressions/xianyuhao.exp3.json"
+			},
+			{
+				"Name": "expression7",
+				"File": "expressions/yanlei.exp3.json"
+			},
+			{
+				"Name": "expression8",
+				"File": "expressions/meimao.exp3.json"
+			}
+		]
+	},
+	"motions": {
+        "idle": [
+        ]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	],
+	"HitAreas": []
+}
