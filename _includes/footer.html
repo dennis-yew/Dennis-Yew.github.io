@@ -33,6 +33,85 @@
             ]
         });
     </script> -->
+    <script src="/assets/js/live2d.js"></script>
+    <script>
+        const oml2d = OML2D.loadOml2d({
+            models: [
+                {
+                    path: '/assets/model/klee/klee.model3.json',
+                    position: [20, 40],
+                    scale: 0.06,
+                    stageStyle: {
+                        height: 250,
+                        width: 250
+                    }
+                },
+                {
+                    path: '/assets/model/Nahida1/Nahida_1080.model3.json',
+                    position: [20, 60],
+                    scale: 0.05,
+                    stageStyle: {
+                        height: 300,
+                        width: 270
+                    }
+                },
+                // {
+                //     path: '/assets/model/fll/fll.model3.json',
+                //     position: [0, 80],
+                //     scale: 0.1,
+                //     stageStyle: {
+                //         height: 350,
+                //         width: 270
+                //     }
+                // },
+                {
+                    path: '/assets/model/Nahida2/草神.model3.json',
+                    position: [20, 40],
+                    scale: 0.05,
+                    stageStyle: {
+                        height: 300,
+                        width: 250
+                    }
+                }, {
+                    path: '/assets/model/Furina/Furina.model3.json',
+                    position: [20, 90],
+                    scale: 0.07,
+                    stageStyle: {
+                        height: 300,
+                        width: 250
+                    }
+                },
+            ]
+        });
+
+        // 事件监听
+        const omlcanvas = document.querySelector("#oml2d-canvas");
+        console.log(omlcanvas); // 检查 canvas 是否被找到
+
+        if (omlcanvas) { // 确保 canvas 元素存在
+            omlcanvas.addEventListener("click", () => {
+                // 在这里调用 changeAnimation 函数，传入 modelConfig
+                changeAnimation();
+            });
+        } else {
+            console.error("omlcanvas 元素未找到");
+        }
+
+        // 点击模型改变动画的函数
+        function changeAnimation() {
+            // 更新当前动画索引
+            oml2d.log();
+            currentAnimationIndex = (currentAnimationIndex + 1) % currentPlayer.config.animations.length;
+            const newAnimation = currentPlayer.config.animations[currentAnimationIndex]; // 获取新的动画名称
+            console.log(newAnimation);
+            // 使用 addAnimation 切换到新的动画
+            currentPlayer.animationState.setAnimation(0, newAnimation, true); // 第一个参数为 trackIndex，设为 0 代表第一个轨道
+        }
+
+        console.log(oml2d);
+        oml2d.stageSlideOutﬁ();
+
+    </script>
 </footer>
 
 <style>
