@@ -3,7 +3,7 @@
 	"FileReferences": {
 		"Moc": "Furina.moc3",
 		"Textures": [
-			"Furina.8192/texture_00.png"
+			"Furina.320/texture_00.png"
 		],
 		"Physics": "Furina.physics3.json",
 		"DisplayInfo": "Furina.cdi3.json",

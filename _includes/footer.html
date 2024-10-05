@@ -44,7 +44,38 @@
             oml2d = OML2D.loadOml2d({
                 models: [
                     {
-                        path: '/assets/model/Nahida1/Nahida_1080.model3.json',//大慈树王
+                        path: '/assets/model/ANIYA/ANIYA.model3.json',
+                        position: [20, 60],
+                        scale: 0.03,
+                        stageStyle: {
+                            height: 300,
+                            width: 270
+                        },
+                        mobilePosition: [10, 30],
+                        mobileScale: 0.03,
+                        mobileStageStyle: {
+                            height: 250,
+                            width: 200,
+                        },
+
+                    },
+                    {
+                        path: '/assets/model/klee/klee.model3.json',
+                        position: [20, 40],
+                        scale: 0.06,
+                        stageStyle: {
+                            height: 250,
+                            width: 250
+                        },
+                        mobilePosition: [10, 50],
+                        mobileScale: 0.04,
+                        mobileStageStyle: {
+                            height: 200,
+                            width: 150
+                        }
+                    },
+                    {
+                        path: '/assets/model/Nahida1/Nahida_320.model3.json',//大慈树王
                         position: [20, 60],
                         scale: 0.05,
                         stageStyle: {
@@ -59,17 +90,8 @@
                         },
 
                     },
-                    // {
-                    //     path: '/assets/model/fll/fll.model3.json',
-                    //     position: [0, 80],
-                    //     scale: 0.1,
-                    //     stageStyle: {
-                    //         height: 350,
-                    //         width: 270
-                    //     }
-                    // },
                     {
-                        path: '/assets/model/Nahida2/草神.model3.json',
+                        path: '/assets/model/Nahida2/Nahida.model3.json',
                         position: [10, 60],
                         scale: 0.047,
                         stageStyle: {
@@ -87,7 +109,7 @@
                     {
                         path: '/assets/model/Furina/Furina.model3.json',
                         position: [20, 90],
-                        scale: 0.07,
+                        scale: 0.06,
                         stageStyle: {
                             height: 300,
                             width: 250
@@ -96,22 +118,8 @@
                         mobileScale: 0.05,
                         mobileStageStyle: {
                             height: 200,
-                            width: 150
+                            width: 180
                         },
-                    }, {
-                        path: '/assets/model/klee/klee.model3.json',
-                        position: [20, 40],
-                        scale: 0.06,
-                        stageStyle: {
-                            height: 250,
-                            width: 250
-                        },
-                        mobilePosition: [10, 50],
-                        mobileScale: 0.04,
-                        mobileStageStyle: {
-                            height: 200,
-                            width: 150
-                        }
                     },
                 ]
             });
@@ -125,10 +133,11 @@
                 // 在这里调用 switchRandomExpression 函数，传入 modelConfig
                 omlcanvas.addEventListener("click", switchRandomExpression);
                 // 监听 touchstart 事件
-                omlcanvas.addEventListener('touchstart', function(event) {
+                omlcanvas.addEventListener('touchstart', function (event) {
                     switchRandomExpression();
-            // 阻止 touch 事件后触发 click 事件
-            event.preventDefault()});
+                    // 阻止 touch 事件后触发 click 事件
+                    event.preventDefault()
+                });
             } else {
                 console.error("omlcanvas 元素未找到");
             }

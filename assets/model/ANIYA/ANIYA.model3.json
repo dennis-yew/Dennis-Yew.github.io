@@ -1,0 +1,77 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "ANIYA.moc3",
+		"Textures": [
+			"ANIYA.Small/texture_00 Small.png",
+			"ANIYA.Small/texture_01 Small.png",
+			"ANIYA.Small/texture_02 Small.png",
+			"ANIYA.Small/texture_03 Small.png",
+			"ANIYA.Small/texture_04 Small.png",
+			"ANIYA.Small/texture_05 Small.png"
+		],
+		"Physics": "ANIYA.physics3.json",
+		"DisplayInfo": "ANIYA.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "0",
+				"File": "Exp/0.exp3.json"
+			},
+			{
+				"Name": "1",
+				"File": "Exp/1.exp3.json"
+			},
+			{
+				"Name": "2",
+				"File": "Exp/2.exp3.json"
+			},
+			{
+				"Name": "nefarious",
+				"File": "Exp/nefarious.exp3.json"
+			},
+			{
+				"Name": "5",
+				"File": "Exp/5.exp3.json"
+			},
+			{
+				"Name": "7",
+				"File": "Exp/7.exp3.json"
+			},
+			{
+				"Name": "9",
+				"File": "Exp/9.exp3.json"
+			},
+			{
+				"Name": "Q",
+				"File": "Exp/Q.exp3.json"
+			},
+			{
+				"Name": "u",
+				"File": "Exp/u.exp3.json"
+			},
+			{
+				"Name": "W",
+				"File": "Exp/W.exp3.json"
+			},
+			{
+				"Name": "y",
+				"File": "Exp/y.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		}
+	]
+}

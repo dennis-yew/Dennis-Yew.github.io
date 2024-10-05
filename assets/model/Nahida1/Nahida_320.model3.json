@@ -1,0 +1,77 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Nahida_320.moc3",
+		"Textures": [
+			"Nahida_320/texture_00.png",
+			"Nahida_320/texture_01.png",
+			"Nahida_320/texture_02.png",
+			"Nahida_320/texture_03.png"
+		],
+		"Physics": "Nahida_320.physics3.json",
+		"DisplayInfo": "Nahida_320.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "Halfeyes",
+				"File": "exp/Halfeyes.exp3.json"
+			},
+			{
+				"Name": "HandChange",
+				"File": "exp/HandChange.exp3.json"
+			},
+			{
+				"Name": "Happy1",
+				"File": "exp/Happy1.exp3.json"
+			},
+			{
+				"Name": "kusa",
+				"File": "exp/kusa.exp3.json"
+			},
+			{
+				"Name": "mouthchange",
+				"File": "exp/mouthchange.exp3.json"
+			},
+			{
+				"Name": "Sad1",
+				"File": "exp/Sad1.exp3.json"
+			},
+			{
+				"Name": "Sad2",
+				"File": "exp/Sad2.exp3.json"
+			},
+			{
+				"Name": "shy_normal",
+				"File": "exp/shy_normal.exp3.json"
+			},
+			{
+				"Name": "Shy",
+				"File": "exp/Shy.exp3.json"
+			},
+			{
+				"Name": "StarEye",
+				"File": "exp/StarEye.exp3.json"
+			},
+			{
+				"Name": "Wink",
+				"File": "exp/Wink.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthOpenY"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		}
+	]
+}

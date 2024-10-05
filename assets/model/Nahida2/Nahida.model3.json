@@ -1,0 +1,71 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Nahida.moc3",
+		"Textures": [
+			"Nahida.320/texture_00.png"
+		],
+		"Physics": "Nahida.physics3.json",
+		"DisplayInfo": "Nahida.cdi3.json",
+		"Expressions": [
+			{
+				"Name": "黑",
+				"File": "exp/黑.exp3.json"
+			},
+			{
+				"Name": "脸红",
+				"File": "exp/脸红.exp3.json"
+			},
+			{
+				"Name": "生气",
+				"File": "exp/生气.exp3.json"
+			},
+			{
+				"Name": "星星",
+				"File": "exp/星星.exp3.json"
+			},
+			{
+				"Name": "泪",
+				"File": "exp/泪.exp3.json"
+			},
+			{
+				"Name": "姿势1",
+				"File": "exp/姿势1.exp3.json"
+			},
+			{
+				"Name": "姿势2",
+				"File": "exp/姿势2.exp3.json"
+			},
+			{
+				"Name": "姿势3",
+				"File": "exp/姿势3.exp3.json"
+			},
+			{
+				"Name": "叶子",
+				"File": "exp/叶子.exp3.json"
+			},
+			{
+				"Name": "发光",
+				"File": "exp/发光.exp3.json"
+			}
+		]
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": [
+				"ParamEyeLOpen",
+				"ParamEyeROpen"
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": [
+				"ParamMouthOpenY"
+			]
+		}
+	],
+	"HitAreas": []
+}
