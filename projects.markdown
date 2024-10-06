@@ -6,4 +6,5 @@
 - A lovely companion [Terra](/Projects/terra.html)!
 - [Read along](/Projects/reader.html) to train your speaking skills.
 - We all love [Sigewinne](/Projects/Sigewinne.html).
-- [Live2D](/Projects/Live2D.html)
+- [Live2D](/Projects/Live2D.html).
+- [Timer](/Projects/tomato.html).

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="/Projects/tomato.css">
+</head>
+
+<body>
+    <div class="pomodoro-timer">
+        <h1>Pomodoro Timer</h1>
+        <div class="timer-display">
+            <span id="minutes">25</span>:<span id="seconds">00</span>
+        </div>
+        <div class="controls">
+            <button id="start">Start</button>
+            <button id="pause">Pause</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div class="session-controls">
+            <button id="work">Work (25 min)</button>
+            <button id="short-break">Short Break (5 min)</button>
+            <button id="long-break">Long Break (15 min)</button>
+        </div>
+    </div>
+    <script src="/assets/js/tomato.js"></script>
+
+    <script src="/assets/js/live2d.js"></script>
+    <script>
+        let oml2d;
+        let expressions; // 存储模型表情的数组
+
+        function loadLive2DModel() {
+            // 载入 Live2D 模型
+
+            oml2d = OML2D.loadOml2d({
+                primaryColor: "#ff958b",
+                mobileDisplay: true,
+                statusBar: {
+                    // 在这里进行配置
+                    disable: true,
+                },
+                menus: {
+                    disable: true,
+                    // 在这里配置
+                },
+                models: [
+                    {
+                        path: '/assets/model/klee2/kelit.model3.json',
+                        position: [40, 100],
+                        scale: 0.1,
+                        stageStyle: {
+                            height: 500,
+                            width: 500
+                        },
+                        mobilePosition: [6, 70],
+                        mobileScale: 0.07,
+                        mobileStageStyle: {
+                            height: 230,
+                            width: 170
+                        },
+                    },
+                    {
+                        path: '/assets/model/klee/klee.model3.json',
+                        position: [30, 30],
+                        scale: 0.06,
+                        stageStyle: {
+                            height: 250,
+                            width: 250
+                        },
+                        mobilePosition: [30, 50],
+                        mobileScale: 0.05,
+                        mobileStageStyle: {
+                            height: 220,
+                            width: 200
+                        }
+                    },
+                ]
+            });
+            console.log(oml2d);
+            oml2d.clearTips();
+            console.log(oml2d.models.currentModelIndex)
+            console.log(oml2d.modelIndex)
+            console.log(oml2d.models.options.models[oml2d.models.currentModelIndex].path)
+
+            const omlcanvas = document.querySelector("#oml2d-canvas");
+
+            if (omlcanvas) { // 确保 canvas 元素存在
+                // 在这里调用 switchRandomExpression 函数，传入 modelConfig
+                omlcanvas.addEventListener("click", switchRandomExpression);
+                // 监听 touchstart 事件
+                omlcanvas.addEventListener('touchstart', function (event) {
+                    switchRandomExpression();
+                    // 阻止 touch 事件后触发 click 事件
+                    event.preventDefault()
+                });
+            } else {
+                console.error("omlcanvas 元素未找到");
+            }
+
+        }
+        // 切换到随机表情
+        function switchRandomExpression() {
+            const model = oml2d.models.model.internalModel;
+            console.log(model.motionManager.motionGroups);
+            console.log(oml2d.models.currentModelOptions.path);
+            oml2d.models.playRandomMotion('TapBody');
+            if (!model.motionManager.expressionManager.setRandomExpression()) {
+                console.log("expression doesn't Exist");
+            }
+            // fetch(oml2d.models.currentModelOptions.path) // 模型表情 JSON 文件的路径
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         console.log(data);
+            //         expressions = data.FileReferences.Expressions; // 保存表情列表
+            //         console.log('Expressions loaded:', expressions);
+            //     })
+            //     .catch(error => console.error('Error loading expressions:', error));
+
+            // console.log('oml2d.models.model.internalModel', model);
+            // if ((expressions !== undefined) && model) {
+            //     const randomIndex = Math.floor(Math.random() * expressions.length);
+            //     const randomExpression = expressions[randomIndex];
+
+            //     // 设置模型的表情
+            //     console.log('randomIndex:', randomIndex);
+            //     console.log('randomExpression:', randomExpression);
+            //     model.motionManager.expressionManager.setExpression(randomIndex)
+            // } else {
+            //     console.log('expressions is empty');
+            // }
+        }
+        loadLive2DModel();
+
+    </script>
+</body>
+
+</html>
