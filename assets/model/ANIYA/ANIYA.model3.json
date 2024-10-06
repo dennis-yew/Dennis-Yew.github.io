@@ -30,12 +30,20 @@
 				"File": "Exp/nefarious.exp3.json"
 			},
 			{
+				"Name": "4",
+				"File": "Exp/4.exp3.json"
+			},
+			{
 				"Name": "5",
 				"File": "Exp/5.exp3.json"
 			},
 			{
 				"Name": "7",
 				"File": "Exp/7.exp3.json"
+			},
+			{
+				"Name": "8",
+				"File": "Exp/8.exp3.json"
 			},
 			{
 				"Name": "9",
