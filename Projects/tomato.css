@@ -12,8 +12,11 @@ h1 {
 }
 
 .pomodoro-timer {
-    margin: 130px 0 0 0;
+    position: relative;
     text-align: center;
+    width: 700px; /* 为了演示效果设置一个固定宽度 */
+    height: 280px;
+    top:10%;
     background: #ffe5f0; /* 柔和的粉红色背景 */
     padding: 20px;
     border-radius: 10px;
@@ -69,8 +72,8 @@ h1 {
     }
 
     .pomodoro-timer {
-        margin: 0;
         padding: 15px;
+        top: -12%;
         width: 80%;
         max-width: 400px;
         box-shadow: none; /* 移动端减少阴影 */
