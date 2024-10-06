@@ -65,7 +65,7 @@ h1 {
 @media (max-width: 768px) {
     body {
         padding: 20px;
-        border: 9px solid #ff958b;
+
     }
 
     .pomodoro-timer {
