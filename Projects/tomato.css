@@ -12,12 +12,14 @@ h1 {
 }
 
 .pomodoro-timer {
+    margin: 130px 0 0 0;
     text-align: center;
     background: #ffe5f0; /* 柔和的粉红色背景 */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border: 3px solid #ff958b; /* 边框为稍深的粉红色 */
+    z-index: 0;
 }
 
 .timer-display {
@@ -63,14 +65,17 @@ h1 {
 @media (max-width: 768px) {
     body {
         padding: 20px;
+        border: 9px solid #ff958b;
     }
 
     .pomodoro-timer {
+        margin: 0;
         padding: 15px;
-        width: 100%;
+        width: 80%;
         max-width: 400px;
         box-shadow: none; /* 移动端减少阴影 */
         border-radius: 5px; /* 边角更柔和 */
+        border: 3px solid #fce4ec;
     }
 
     .timer-display {
@@ -78,7 +83,7 @@ h1 {
     }
 
     .controls button, .session-controls button {
-        width: 100%; /* 按钮全宽 */
+        width: 90%; /* 按钮全宽 */
         font-size: 14px; /* 按钮字体缩小 */
         padding: 12px; /* 按钮高度适当增大 */
     }

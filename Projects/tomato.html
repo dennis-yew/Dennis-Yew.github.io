@@ -36,6 +36,7 @@
             // 载入 Live2D 模型
 
             oml2d = OML2D.loadOml2d({
+                sayHello: "false",
                 primaryColor: "#ff958b",
                 mobileDisplay: true,
                 statusBar: {
@@ -43,38 +44,34 @@
                     disable: true,
                 },
                 menus: {
-                    disable: true,
+                    disable: false,
                     // 在这里配置
+                },
+                tips:{
+                    style:{
+                        "display": "none"
+                    }
                 },
                 models: [
                     {
-                        path: '/assets/model/klee2/kelit.model3.json',
-                        position: [40, 100],
-                        scale: 0.1,
-                        stageStyle: {
-                            height: 500,
-                            width: 500
-                        },
-                        mobilePosition: [6, 70],
-                        mobileScale: 0.07,
-                        mobileStageStyle: {
-                            height: 230,
-                            width: 170
-                        },
-                    },
-                    {
                         path: '/assets/model/klee/klee.model3.json',
-                        position: [30, 30],
-                        scale: 0.06,
-                        stageStyle: {
-                            height: 250,
-                            width: 250
-                        },
+                        position: [30,0],
+                        scale: 0.07,
                         mobilePosition: [30, 50],
                         mobileScale: 0.05,
                         mobileStageStyle: {
-                            height: 220,
-                            width: 200
+                            "position": "absolute",
+                            "top": "60%",
+                            "height": "220px",
+                            "width": "210px"
+                        },
+                        stageStyle: {
+                            "position": "absolute",
+                            "top": "54px", /* 控制图片与闹钟的重叠程度，向上偏移 */
+                            "left": "50%",
+                            "transform": "translateX(-50%)", /* 确保图片水平居中 */
+                            "width": "300px", /* 设定图片的宽度，可以根据需要调整 */
+                            "z-index": "1" /* 图片位于闹钟的后面 */
                         }
                     },
                 ]
