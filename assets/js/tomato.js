@@ -44,6 +44,11 @@ function startTimer() {
             }
         }, 1000);
     }
+    // 确保计时器为零时不开始计时
+    if (timeLeft === 0) {
+        timeLeft = defaultTime;
+        updateTimerDisplay();
+    }
     // 新增：点击开始按钮时的触发事件
     triggerStartEvent();
 }
