@@ -89,7 +89,7 @@ function triggerStartEvent() {
 function triggerPauseEvent() {
     console.log('Pause button clicked');
     // 你可以在这里添加其他暂停时需要执行的功能
-    const eventData = 5; // ><
+    const eventData = 3; // OO
     const event = new CustomEvent('TimerPause', { detail: eventData });
     window.dispatchEvent(event);  // 触发事件
 
@@ -98,7 +98,7 @@ function triggerPauseEvent() {
 function triggerEndEvent() {
     console.log('Timer ended');
     // 你可以在这里添加计时结束后的其他功能
-    const eventData = 3; // OO
+    const eventData = 5; // ><
     const newWord =startGame();
     const event = new CustomEvent('TimerEnd', { detail: {eventData: eventData,keys: newWord}});
     window.dispatchEvent(event);  // 触发事件

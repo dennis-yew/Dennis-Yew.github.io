@@ -52,12 +52,24 @@
                     // 在这里配置
                 },
                 tips: {
+                    welcomeTip: {
+                        message: {
+                            daybreak: "早上好！一日之计在于晨，美好的一天就要开始了。",
+                            morning: "早啊，带可莉去玩吧，我们一起来冒险",
+                            noon: "中午了，工作了一个上午，现在是午餐时间！",
+                            afternoon: "午后很容易犯困呢，来杯咖啡吧~",
+                            dusk: "傍晚了！工作一天幸苦啦~",
+                            night: "晚上好，今天过得怎么样呢？",
+                            lateNight: "已经这么晚了呀，早点休息吧，晚安~",
+                            weeHours: "这么晚还不睡吗？当心熬夜秃头哦！"
+                        }
+                    },
                     style: {
                         "left": "110%",
                         "top": "20%",
                         "width": "250px",
                     },
-                    mobileStyle:{
+                    mobileStyle: {
                         "left": "150px",
                         "top": "5%",
                         "width": "250px",
@@ -110,8 +122,22 @@
                 console.error("omlcanvas 元素未找到");
             }
 
+            // 音频播放控件
+            let currentAudio = null;  // 用于存储当前播放的音频
 
+            function playAudio(src) {
+                // 如果有正在播放的音频，先停止它
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;  // 重置到开头
+                }
 
+                // 创建新的音频实例并播放
+                currentAudio = new Audio(src);
+                currentAudio.play();
+            }
+
+            
             // 监听 window 上的自定义事件，并获取数据
             // 
             window.addEventListener('TimerStart', (event) => {
@@ -119,48 +145,48 @@
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail);
                 oml2d.clearTips();
-                const sentence = "嘿嘿！计时开始！可莉已经准备好啦～";
-                oml2d.tips.showMessage(sentence);
-                const audio = new Audio('/assets/model/klee/sounds/准备好啦.wav');
-                audio.play();
+                const sentence = "好耶！是大冒险！";
+                oml2d.tipsMessage(sentence, 6000, 2);
+                playAudio('/assets/model/klee/sounds/大冒险.mp3');
+                
 
             });
             window.addEventListener('TimerPause', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail);
                 oml2d.clearTips();
-                const sentence = "诶？怎么突然停了？是不是炸弹、不对，计时器出问题了？";
-                oml2d.tips.showMessage(sentence);
-                const audio = new Audio('/assets/model/klee/sounds/暂停.wav');
-                audio.play();
+                const sentence = "玩累了。。。有点晕。。。";
+                oml2d.tipsMessage(sentence, 4000, 2);
+                playAudio('/assets/model/klee/sounds/休息.mp3');
+                
             });
             window.addEventListener('TimerEnd', (event) => {
                 console.log('Received event data:', event.detail.eventData);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail.eventData);
                 console.log(event.detail.keys);
                 oml2d.clearTips();
-                const sentence = "哇！可莉找到线索啦！ " + event.detail.keys;
-                oml2d.tips.showMessage(sentence);
-                const audio = new Audio('/assets/model/klee/sounds/找到线索.wav');
-                audio.play();
+                const sentence = "可莉又找到新的宝物啦! " + event.detail.keys;
+                oml2d.tipsMessage(sentence, 10000, 2);
+                playAudio('/assets/model/klee/sounds/宝物.mp3');
+                
             });
             window.addEventListener('AfterEndTimerEnd', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail);
                 oml2d.clearTips();
-                const sentence = "可莉又有力气啦！准备好看可莉的超级烟花了吗？比上次更大!";
-                oml2d.tips.showMessage(sentence);
-                const audio = new Audio('/assets/model/klee/sounds/精力恢复.wav');
-                audio.play();
+                const sentence = "火力全开!";
+                oml2d.tipsMessage(sentence, 4000, 2);
+                playAudio('/assets/model/klee/sounds/火力全开.mp3');
+                
             });
             window.addEventListener('ChangeTimer', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail);
                 oml2d.clearTips();
-                const sentence ="改时间对不对呢？嘿嘿，可莉不会让别人发现的~";
-                oml2d.tips.showMessage(sentence);
-                const audio = new Audio('/assets/model/klee/sounds/改时间.wav');
-                audio.play();
+                const sentence = "可莉来帮忙~";
+                oml2d.tipsMessage(sentence, 4000, 2);
+                playAudio('/assets/model/klee/sounds/来帮忙.mp3');
+                
             });
 
         }
