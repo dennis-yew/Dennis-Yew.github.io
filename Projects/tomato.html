@@ -120,37 +120,47 @@
                 switchExpression(event.detail);
                 oml2d.clearTips();
                 const sentence = "嘿嘿！计时开始！可莉已经准备好啦～";
-                oml2d.tips.showMessage(sentence)
+                oml2d.tips.showMessage(sentence);
+                const audio = new Audio('/assets/model/klee/sounds/准备好啦.wav');
+                audio.play();
 
             });
             window.addEventListener('TimerPause', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail);
                 oml2d.clearTips();
-                const sentence = "诶？怎么突然停了？是不是炸弹、啊不，计时器出问题了？";
-                oml2d.tips.showMessage(sentence)
+                const sentence = "诶？怎么突然停了？是不是炸弹、不对，计时器出问题了？";
+                oml2d.tips.showMessage(sentence);
+                const audio = new Audio('/assets/model/klee/sounds/暂停.wav');
+                audio.play();
             });
             window.addEventListener('TimerEnd', (event) => {
                 console.log('Received event data:', event.detail.eventData);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail.eventData);
                 console.log(event.detail.keys);
                 oml2d.clearTips();
-                const sentence = "哇！可莉找到线索啦！这是去找宝藏的关键： " + event.detail.keys;
-                oml2d.tips.showMessage(sentence)
+                const sentence = "哇！可莉找到线索啦！ " + event.detail.keys;
+                oml2d.tips.showMessage(sentence);
+                const audio = new Audio('/assets/model/klee/sounds/找到线索.wav');
+                audio.play();
             });
             window.addEventListener('AfterEndTimerEnd', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail);
                 oml2d.clearTips();
                 const sentence = "可莉又有力气啦！准备好看可莉的超级烟花了吗？比上次更大!";
-                oml2d.tips.showMessage(sentence)
+                oml2d.tips.showMessage(sentence);
+                const audio = new Audio('/assets/model/klee/sounds/精力恢复.wav');
+                audio.play();
             });
             window.addEventListener('ChangeTimer', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail);
                 oml2d.clearTips();
-                const sentence ="改时间对不对呢？嘘，可莉不会让别人发现的~";
-                oml2d.tips.showMessage(sentence)
+                const sentence ="改时间对不对呢？嘿嘿，可莉不会让别人发现的~";
+                oml2d.tips.showMessage(sentence);
+                const audio = new Audio('/assets/model/klee/sounds/改时间.wav');
+                audio.play();
             });
 
         }

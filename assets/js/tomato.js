@@ -112,6 +112,8 @@ function triggerFiveMinutesAfterEnd() {
     const event = new CustomEvent('AfterEndTimerEnd', { detail: eventData });
     window.dispatchEvent(event);  // 触发事件
 }
+// 自定义触发事件：计时结束后5分钟触发
+
 function triggerChangeTimer() {
     console.log('ChangeTimer');
     // 在这里添加计时结束后5分钟触发的功能
