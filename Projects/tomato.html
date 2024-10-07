@@ -165,7 +165,7 @@
                 switchExpression(event.detail.eventData);
                 console.log(event.detail.keys);
                 oml2d.clearTips();
-                const sentence = "可莉又找到新的宝物啦! " + event.detail.keys;
+                const sentence = "可莉又找到新的宝物啦! " +"关键词：["+ event.detail.keys + "]";
                 oml2d.tipsMessage(sentence, 10000, 2);
                 playAudio('/assets/model/klee/sounds/宝物.mp3');
                 
