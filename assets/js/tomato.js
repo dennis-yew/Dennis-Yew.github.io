@@ -151,7 +151,11 @@ longBreakButton.addEventListener('click', () => setTimer(900)); // 15 minutes
 
 // 小彩蛋
 // 字库
-const wordBank = ['去','爱', '去','创造', '并','最终', '一起','燃烧'];
+// const wordBank = ['去','爱', '去','创造', '并','最终', '一起','燃烧'];
+const wordBank = [
+    "No mistakes", "in the tango", "not like", "life", 
+    "It's simple",  "That's", "what makes", "the tango", "so great", 
+    "If you", "make a mistake", "get", "all", "tangled", "up"];
 
 // 随机抽取一个字
 function getRandomWord() {
@@ -166,5 +170,12 @@ let sentence = [];
 function startGame() {
     let newWord = getRandomWord();
     return newWord;
-
+    
+    // const userAnswer = prompt('请说出你认为的句子：');
+    // // 判断用户输入是否正确
+    // if (userAnswer === sentence.join('')) {
+    //   console.log('恭喜你，你猜对了！');
+    // } else {
+    //   console.log('很遗憾，你猜错了。正确的句子是：', sentence.join(''));
+    // }
 }
