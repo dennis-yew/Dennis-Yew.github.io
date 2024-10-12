@@ -9,6 +9,43 @@
 </head>
 
 <body>
+
+    <!-- Loading Screen -->
+    <!-- 视频预加载动画 -->
+    <div id="preload-video-container">
+        <video id="preload-video" autoplay muted playsinline>
+            <source src="/assets/ui/My Movie.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const preloadVideo = document.getElementById("preload-video");
+            const mainContent = document.getElementById("main-content");
+            const preloadContainer = document.getElementById("preload-video-container");
+
+            // 当视频播放结束时
+            preloadVideo.onended = function () {
+                // 视频容器淡出
+                preloadContainer.classList.add('hidden');
+                // 页面内容淡入
+                mainContent.style.opacity = 1;
+            };
+        });
+
+    </script>
+
+
+    <!-- <img src="/assets//img/荞麦花.png" alt="Sticker Image" class="sticker"> -->
+    <style>
+        .sticker {
+            display: inline-block;
+            filter: drop-shadow(0 0 10px white);
+            /* 可调节数值让边缘更宽 */
+        }
+    </style>
+
     <div class="pomodoro-timer">
         <h1>Pomodoro Timer</h1>
         <div class="timer-display">

@@ -140,3 +140,42 @@ h1 {
     font-family: Arial, sans-serif;
     text-align: center; /* 居中文本 */
 }
+
+
+
+/* loading */
+
+/* 全屏加载背景 */
+/* 初始状态：隐藏主页面内容 */
+#main-content {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; /* 主页面淡入过渡效果 */
+}
+
+/* 视频容器全屏显示 */
+#preload-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* 视频背景色 */
+    z-index: 9999; /* 保证在页面最上层 */
+    transition: opacity 1s ease-in-out; /* 视频淡出过渡效果 */
+}
+
+/* 全屏视频 */
+#preload-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 视频容器隐藏时的状态（淡出） */
+#preload-video-container.hidden {
+    opacity: 0;
+    pointer-events: none; /* 禁止点击交互 */
+}
