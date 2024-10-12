@@ -25,10 +25,29 @@
             <button id="long-break">Long Break (15 min)</button>
         </div>
     </div>
+    <div id="daysCounter">We've met for <span id="days"></span> days</div>
     <script src="/assets/js/tomato.js"></script>
 
     <script src="/assets/js/live2d.js"></script>
+
     <script>
+        // 计算开放天数的函数
+        function calculateDaysSinceLaunch() {
+            // 网站开放日期 (2023-12-27)
+            const launchDate = new Date('2023-12-27');
+            // 获取当前日期
+            const currentDate = new Date();
+            // 计算差值 (毫秒)
+            const timeDifference = currentDate - launchDate;
+            // 将毫秒转换为天数
+            const daysSinceLaunch = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            return daysSinceLaunch;
+        }
+
+        // 将天数显示在页面上
+        document.getElementById('days').innerText = calculateDaysSinceLaunch();
+    </script>
+    <script type="module">
         let oml2d;
         let expressions; // 存储模型表情的数组
         // 选择 body 下所有 class 为 'pomodoro-timer' 的 div 元素
@@ -52,17 +71,20 @@
                     // 在这里配置
                 },
                 tips: {
+                    messageLine: 4,
+                    idleTips: { wordTheDay: !1, message: [], duration: 5e3, interval: 1e4, priority: 2 },
                     welcomeTip: {
                         message: {
-                            daybreak: "早上好！一日之计在于晨，美好的一天就要开始了。",
-                            morning: "早啊，带可莉去玩吧，我们一起来冒险",
-                            noon: "中午了，工作了一个上午，现在是午餐时间！",
-                            afternoon: "午后很容易犯困呢，来杯咖啡吧~",
-                            dusk: "傍晚了！工作一天幸苦啦~",
-                            night: "晚上好，今天过得怎么样呢？",
-                            lateNight: "已经这么晚了呀，早点休息吧，晚安~",
-                            weeHours: "这么晚还不睡吗？当心熬夜秃头哦！"
-                        }
+                            daybreak: "早上好呀！新的大冒险就要开始啦！嘿嘿，可莉准备好了哦~",
+                            morning: "早安早安！今天要去哪里探险呢？可莉已经迫不及待了！",
+                            noon: "诶，中午了！要吃好吃的午饭吗？吃饱了才有力气炸鱼呢~",
+                            afternoon: "下午好呀，这个时候有点困了呢…不过再玩一会儿也没关系吧？",
+                            dusk: "天快黑啦~今天的探险很有趣呢！不过要小心，不要踩到可莉的蹦蹦炸弹哦！",
+                            night: "晚上好！可莉今天玩得可开心啦~不过也要早点休息哦！",
+                            lateNight: "已经这么晚了嘛？可莉有点困了…不过还是要说，晚安啦！",
+                            weeHours: "咦？你还没睡吗？要注意身体哦，不然琴团长会像对可莉一样，‘禁闭’你的！"
+                        },
+                        duration: 6e3, priority: 2
                     },
                     style: {
                         "left": "110%",
@@ -136,7 +158,7 @@
                 currentAudio.play();
             }
 
-            
+
             // 监听 window 上的自定义事件，并获取数据
             // 
             window.addEventListener('TimerStart', (event) => {
@@ -147,7 +169,7 @@
                 const sentence = "好耶！是大冒险！";
                 oml2d.tipsMessage(sentence, 6000, 2);
                 playAudio('/assets/model/klee/sounds/大冒险.mp3');
-                
+
 
             });
             window.addEventListener('TimerPause', (event) => {
@@ -157,17 +179,17 @@
                 const sentence = "玩累了。。。有点晕。。。";
                 oml2d.tipsMessage(sentence, 4000, 2);
                 playAudio('/assets/model/klee/sounds/休息.mp3');
-                
+
             });
             window.addEventListener('TimerEnd', (event) => {
                 console.log('Received event data:', event.detail.eventData);  // 读取 file1.js 传递的数据
                 switchExpression(event.detail.eventData);
                 console.log(event.detail.keys);
                 oml2d.clearTips();
-                const sentence = "可莉又找到新的宝物啦! " +"关键词：["+ event.detail.keys + "]";
+                const sentence = "可莉又找到新的宝物啦! " + "关键词：[" + event.detail.keys + "]";
                 oml2d.tipsMessage(sentence, 10000, 2);
                 playAudio('/assets/model/klee/sounds/宝物.mp3');
-                
+
             });
             window.addEventListener('AfterEndTimerEnd', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
@@ -176,7 +198,7 @@
                 const sentence = "火力全开!";
                 oml2d.tipsMessage(sentence, 4000, 2);
                 playAudio('/assets/model/klee/sounds/火力全开.mp3');
-                
+
             });
             window.addEventListener('ChangeTimer', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
@@ -185,7 +207,7 @@
                 const sentence = "可莉来帮忙~";
                 oml2d.tipsMessage(sentence, 4000, 2);
                 playAudio('/assets/model/klee/sounds/来帮忙.mp3');
-                
+
             });
 
         }

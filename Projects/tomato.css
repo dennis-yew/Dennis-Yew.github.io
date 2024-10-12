@@ -5,62 +5,80 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #fce4ec; /* 浅粉背景 */
+    background-color: #fce4ec;
+    /* 浅粉背景 */
 }
+
 h1 {
-    color: #e64242; 
+    color: #e64242;
 }
 
 .pomodoro-timer {
     position: relative;
     text-align: center;
-    width: 700px; /* 为了演示效果设置一个固定宽度 */
+    width: 700px;
+    /* 为了演示效果设置一个固定宽度 */
     height: 280px;
-    top:10%;
-    background: #ffe5f0; /* 柔和的粉红色背景 */
+    top: 10%;
+    background: #ffe5f0;
+    /* 柔和的粉红色背景 */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 3px solid #ff958b; /* 边框为稍深的粉红色 */
+    border: 3px solid #ff958b;
+    /* 边框为稍深的粉红色 */
     z-index: 0;
 }
 
 .timer-display {
     font-size: 48px;
     margin-bottom: 20px;
-    color: #f65f7e; /* 深粉色用于显示时间 */
+    color: #f65f7e;
+    /* 深粉色用于显示时间 */
 }
 
-.controls button, .session-controls button {
+.controls button,
+.session-controls button {
     margin: 5px;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #ff8a80; /* 粉红按钮 */
+    background-color: #ff8a80;
+    /* 粉红按钮 */
     color: white;
 }
 
-.controls button:hover, .session-controls button:hover {
-    background-color: #ff5252; /* 鼠标悬停时，颜色更深 */
+.controls button:hover,
+.session-controls button:hover {
+    background-color: #ff5252;
+    /* 鼠标悬停时，颜色更深 */
 }
 
-#start, #pause, #reset {
-    background-color: #ff5252; /* 操作按钮颜色更深一些 */
+#start,
+#pause,
+#reset {
+    background-color: #ff5252;
+    /* 操作按钮颜色更深一些 */
 }
 
-#start:hover, #pause:hover, #reset:hover {
-    background-color: #e64242; /* 操作按钮悬停时颜色 */
+#start:hover,
+#pause:hover,
+#reset:hover {
+    background-color: #e64242;
+    /* 操作按钮悬停时颜色 */
 }
 
 .session-controls button {
-    background-color: #ffccbc; /* 不同模式按钮颜色柔和 */
+    background-color: #ffccbc;
+    /* 不同模式按钮颜色柔和 */
     color: #880e4f;
 }
 
 .session-controls button:hover {
-    background-color: #ffab91; /* 悬停时更显眼的粉橙色 */
+    background-color: #ffab91;
+    /* 悬停时更显眼的粉橙色 */
 }
 
 
@@ -76,22 +94,49 @@ h1 {
         top: -12%;
         width: 80%;
         max-width: 400px;
-        box-shadow: none; /* 移动端减少阴影 */
-        border-radius: 5px; /* 边角更柔和 */
+        box-shadow: none;
+        /* 移动端减少阴影 */
+        border-radius: 5px;
+        /* 边角更柔和 */
         border: 3px solid #fce4ec;
     }
 
     .timer-display {
-        font-size: 36px; /* 时间显示字体稍微调小 */
+        font-size: 36px;
+        /* 时间显示字体稍微调小 */
     }
 
-    .controls button, .session-controls button {
-        width: 90%; /* 按钮全宽 */
-        font-size: 14px; /* 按钮字体缩小 */
-        padding: 12px; /* 按钮高度适当增大 */
+    .controls button,
+    .session-controls button {
+        width: 90%;
+        /* 按钮全宽 */
+        font-size: 14px;
+        /* 按钮字体缩小 */
+        padding: 12px;
+        /* 按钮高度适当增大 */
     }
 
     .controls button {
-        margin-bottom: 10px; /* 按钮之间的间距 */
+        margin-bottom: 10px;
+        /* 按钮之间的间距 */
     }
+}
+
+
+
+/* 固定定位在页面右下角 */
+#daysCounter {
+    position: fixed;
+    bottom: 5px;
+    left: 50%;
+    color: #880e4f;
+    padding: 10px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    position: fixed;
+
+    transform: translateX(-50%); /* 通过平移将元素的中心对齐到页面中间 */
+
+    font-family: Arial, sans-serif;
+    text-align: center; /* 居中文本 */
 }
