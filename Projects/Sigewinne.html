@@ -23,13 +23,13 @@
         }
 
         #player-container {
-            width: 30%;
-            height: 30%;
+            width: 100%;
+            height: 100%;
             position: fixed;
             /* 固定定位 */
-            left: -10px;
+            right: 10px;
             /* 画布左侧对齐 */
-            bottom: 5px;
+            bottom: 50px;
             /* 底部对齐 */
             z-index: 1000;
             /* 确保在其他内容上方 */
@@ -74,7 +74,7 @@
         <button onclick="switchModel('xgw')">模型 1</button>
         <button onclick="switchModel('xinhai')">模型 2</button>
         <button onclick="switchModel('lxz')">模型 3</button>
-
+        <button onclick="switchModel('klee')">模型 4</button>
     </div>
 
     <script>
@@ -96,8 +96,6 @@
                 animations: ["loop"],
                 skin: "default",
                 skins: ["default"]
-
-
             },
             lxz: {
                 skeleton: "/assets/js/lxz.json",
@@ -106,7 +104,15 @@
                 animations: ["loop", "s", "walk"],
                 skin: "1",
                 skins: ["1", "2", "3", "4", "5"]
-            }
+            },
+            klee: {
+                skeleton: "/assets/js/klee3.json",
+                atlas: "/assets/js/klee3.atlas",
+                animation: "loop",
+                animations: ["loop"],
+                skin: "default",
+                skins: ["default"]
+            },
         };
 
         // 加载模型的函数
@@ -125,7 +131,9 @@
                 loop: true, // 循环播放
                 animation: modelConfig.animation,
                 animations: modelConfig.animations,
-                showControls: false,
+                showControls: true,
+                preserveDrawingBuffe: true,
+                premultipliedAlpha: false,
                 skin: modelConfig.skin,
                 skins: modelConfig.skins,
                 alpha: true, // Enable player translucency
