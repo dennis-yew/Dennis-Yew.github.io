@@ -96,7 +96,7 @@ function setTimer(seconds) {
 
 // 检查是否为番茄钟
 function isworkTimer() {
-    if (timeLeft == 1500) {
+    if (timeLeft == 5) {
         is25Timer = true;
     } else {
         is25Timer = false;
@@ -131,8 +131,9 @@ function triggerEndEvent() {
         const Gameindex = finishPomodoroCycle();
         // 可以在这里添加25计时结束后的其他功能
         const eventData = 5; // ><
-        const newWord = startGame(Gameindex);
-        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, keys: newWord } });
+        const newWord = wordBank[Gameindex-1];
+        const keywords = startGame(Gameindex);
+        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, keys: newWord, keywords: keywords} });
         window.dispatchEvent(event);  // 触发事件
     } else {
         // #####?
@@ -166,7 +167,7 @@ startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 
-workButton.addEventListener('click', () => setTimer(1500)); // 25 minutes
+workButton.addEventListener('click', () => setTimer(5)); // 25 minutes
 shortBreakButton.addEventListener('click', () => setTimer(300)); // 5 minutes
 longBreakButton.addEventListener('click', () => setTimer(900)); // 15 minutes
 
@@ -218,9 +219,9 @@ window.onload = function () {
 //     "It's simple",  "That's", "what makes", "the tango", "so great", 
 //     "If you", "make a mistake", "get", "all", "tangled", "up"];
 const wordBank = [
-    "Y", "o", "u",
-    "I",
-    "j", "u", "m", "p"];
+    "J", "u", "m", "p",
+    "Y", "o", "u","I"
+    ];
 // 随机抽取一个字
 function getRandomWord() {
     const randomIndex = Math.floor(Math.random() * wordBank.length);

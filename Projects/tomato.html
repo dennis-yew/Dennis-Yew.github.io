@@ -257,7 +257,7 @@
                 const sentence = "可莉又找到新的宝物啦! " + "关键词：[" + event.detail.keys + "]";
                 oml2d.tipsMessage(sentence, 10000, 2);
                 playAudio('/assets/model/klee/sounds/宝物.mp3');
-                TreasureKeys(event.detail.keys);
+                TreasureKeys(event.detail.keywords);
             });
             window.addEventListener('AfterEndTimerEnd', (event) => {
                 console.log('Received event data:', event.detail);  // 读取 file1.js 传递的数据
@@ -302,53 +302,15 @@
         // setTimeout(loadLive2DModel,6000); 延时加载模型
     </script>
 
-    <!-- 藏宝图显示区域 -->
-    <!-- <style>
-        #treasureMap {
-            position: absolute;
-            top: 12%;
-            right: 5%;
-            width: 160px;
-            height: 80px;
-            /* padding: 10px; */
-            /* border: 3px solid #e1b8b8; */
-            background-color: #ffb2c43d;
-            border-radius: 20px;
-            /* margin-top: 20px; */
-            font-family: Arial, sans-serif;
-            z-index: -1;
-        }
-        #keywordList{
-            height: 100%;
-            /* position: absolute; */
-            /* top: 29px; */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* flex-direction: column; */
-        }
-        .keyword {
-            display: flex;
-            /* padding: 5px; */
-            font-size: 14px;
-            /* padding: 20px; */
-            color: #ff373785;
-            border-radius: 4px;
-            flex-direction: row-reverse;
-        }
-    </style>
-    <div id="treasureMap">
-        <div id="keywordList"></div>
-    </div> -->
     <script>
-        function TreasureKeys(keyword) {
-            const keywordElement = document.getElementById('keyword');
-            keywordElement.textContent = keyword;
+        function TreasureKeys(keywords) {
+            const keywordElement = document.getElementById('keywords');
+            keywordElement.textContent = keywords;
         }
     </script>
 
     <!-- 页脚记录天数 -->
-    <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love<span id="keyword"></span></div>
+    <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love<span id="keywords"></span></div>
     <!-- // 计算开放天数的函数 -->
     <script>
 
