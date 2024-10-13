@@ -195,7 +195,7 @@ function updateCycleCount() {
 }
 
 // 调用函数来更新每个周期
-function getCycleCount() {
+function finishPomodoroCycle() {
     // 完成一个番茄钟周期后调用
     updateCycleCount();
     console.log("Current Tomato Clock Rounds: " + getCycleCount());
@@ -218,8 +218,9 @@ window.onload = function () {
 //     "It's simple",  "That's", "what makes", "the tango", "so great", 
 //     "If you", "make a mistake", "get", "all", "tangled", "up"];
 const wordBank = [
-    "j", "u", "m", "p", "Y", "o", "u",
-    "I"];
+    "Y", "o", "u",
+    "I",
+    "j", "u", "m", "p"];
 // 随机抽取一个字
 function getRandomWord() {
     const randomIndex = Math.floor(Math.random() * wordBank.length);
@@ -227,7 +228,7 @@ function getRandomWord() {
 }
 
 // 存放所有抽取的字
-var keywords = startGame(finishPomodoroCycle());
+var keywords = startGame(getCycleCount());
 
 // 游戏开始
 function startGame(Gameindex) {
