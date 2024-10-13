@@ -6,8 +6,67 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #fce4ec;
+    transition: all 200ms ease;
     /* 浅粉背景 */
 }
+
+
+/* ########## */
+.toggle {
+    width: 40px;
+    height: 22px;
+    top: 5%;
+    right: 5%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+}
+.toggle > div {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-radius: 25px;
+    transition: all 200ms ease;
+    z-index: 1;
+}
+
+.light {
+    background: #fce4ec;
+}
+
+.light .toggle {
+    background: #fdd6df;
+}
+
+.light .toggle > div {
+    left: 5px;
+    background: pink;
+}
+
+.dark {
+    background: rgba(50,50,50,1);
+}
+
+.dark .toggle {
+    background: rgba(70,70,70,1);
+
+}
+
+.dark .toggle > div {
+    left: 20px;
+    background: rgba(50,50,50,1);
+}
+body > div.pomodoro-timer.darkmode{
+    background-color: #7e1616;
+}
+body > div.pomodoro-timer.darkmode > div.timer-display{
+    color: #e89620;
+}
+
+/* ########### */
+
 
 h1 {
     color: #e64242;
@@ -31,7 +90,8 @@ h1 {
 }
 
 .timer-display {
-    font-size: 48px;
+    font-size: 60px;
+    height: 65px;
     margin-bottom: 20px;
     color: #f65f7e;
     /* 深粉色用于显示时间 */
@@ -126,13 +186,11 @@ h1 {
 
 /* 固定定位在页面右下角 */
 #daysCounter {
-    position: fixed;
     bottom: 5px;
     width: 50%;
-    color: #880e4f;
+    color: #880e0e;
     padding: 10px;
     font-size: 14px;
-    font-family: Arial, sans-serif;
     position: fixed;
 
     font-family: Arial, sans-serif;
