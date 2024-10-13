@@ -144,8 +144,8 @@ h1 {
 /* 移动端适配 */
 @media (max-width: 768px) {
     body {
-        padding: 20px;
-
+        padding: 0 20px;
+        /* width: 93%; */
     }
 
     .pomodoro-timer {
@@ -191,7 +191,7 @@ h1 {
     color: #880e0e;
     padding: 10px;
     font-size: 14px;
-    position: fixed;
+    position: absolute;
 
     font-family: Arial, sans-serif;
     text-align: center;

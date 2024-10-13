@@ -96,7 +96,7 @@ function setTimer(seconds) {
 
 // 检查是否为番茄钟
 function isworkTimer() {
-    if (timeLeft == 5) {
+    if (timeLeft == 1500) {
         is25Timer = true;
     } else {
         is25Timer = false;
@@ -167,7 +167,7 @@ startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 
-workButton.addEventListener('click', () => setTimer(5)); // 25 minutes
+workButton.addEventListener('click', () => setTimer(1500)); // 25 minutes
 shortBreakButton.addEventListener('click', () => setTimer(300)); // 5 minutes
 longBreakButton.addEventListener('click', () => setTimer(900)); // 15 minutes
 
