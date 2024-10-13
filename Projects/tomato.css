@@ -58,13 +58,12 @@ body {
     left: 20px;
     background: rgba(50,50,50,1);
 }
-body > div.pomodoro-timer.darkmode{
-    background-color: #7e1616;
+body > div.pomodoro-timer > div.timer-display.darkmode{
+    color: rgb(255, 229, 229);
 }
-body > div.pomodoro-timer.darkmode > div.timer-display{
-    color: #e89620;
+#daysCounter.darkmode{
+    color: rgb(255, 229, 229);
 }
-
 /* ########### */
 
 
@@ -79,7 +78,7 @@ h1 {
     /* 为了演示效果设置一个固定宽度 */
     height: 280px;
     top: 8%;
-    background: #ffe5f0;
+    background: transparent;
     /* 柔和的粉红色背景 */
     padding: 20px;
     border-radius: 10px;
@@ -151,14 +150,15 @@ h1 {
 
     .pomodoro-timer {
         padding: 15px;
-        top: -18%;
+        top: 0%;
         width: 80%;
+        height: 507px;
         max-width: 400px;
         box-shadow: none;
         /* 移动端减少阴影 */
         border-radius: 5px;
         /* 边角更柔和 */
-        border: 3px solid #fce4ec;
+        border: 3px solid transparent;
     }
 
     .timer-display {

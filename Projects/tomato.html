@@ -75,11 +75,10 @@
         <script type="text/javascript">
             function openDark(toggle) {
                 let body = document.body;
-                const TimerContainer = document.querySelector('body > div.pomodoro-timer');
                 const Timerdisplay = document.querySelector('body > div.pomodoro-timer> div.timer-display');
-                TimerContainer.classList.toggle('darkmode');
                 Timerdisplay.classList.toggle('darkmode');
-
+                const DaysCounter = document.querySelector('#daysCounter');
+                DaysCounter.classList.toggle('darkmode');
                 if (toggle.state == null) {
                     toggle.state = false;
                 }
@@ -181,7 +180,7 @@
                             mobileScale: 0.04,
                             mobileStageStyle: {
                                 "position": "relative",
-                                "top": "-72%",
+                                "top": "-39%",
                                 "left": "-11%",
                                 "height": "250px",
                                 "width": "210px",
