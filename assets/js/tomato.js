@@ -233,7 +233,7 @@ var keywords = startGame(getCycleCount());
 // 游戏开始
 function startGame(Gameindex) {
     let slicedArray = '';
-    if (Gameindex == null) {
+    if (Gameindex == 0) {
         return slicedArray;
     } else {
         if(Gameindex >= wordBank.length){
@@ -241,16 +241,9 @@ function startGame(Gameindex) {
             slicedArray = wordBank.slice(0, wordBank.length).join(''); // 无分隔符拼接
             slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | "
         }else
-        slicedArray = wordBank.slice(0, Gameindex).join(''); // 无分隔符拼接
-        // 将数组元素用逗号拼接成字符串
-        return slicedArray;
+            slicedArray = wordBank.slice(0, Gameindex).join(''); // 无分隔符拼接
+            // 将数组元素用逗号拼接成字符串
+            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | "
     }
-
-    // const userAnswer = prompt('请说出你认为的句子：');
-    // // 判断用户输入是否正确
-    // if (userAnswer === keywords.join('')) {
-    //   console.log('恭喜你，你猜对了！');
-    // } else {
-    //   console.log('很遗憾，你猜错了。正确的句子是：', sentence.join(''));
-    // }
+    return slicedArray;
 }
