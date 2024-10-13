@@ -19,7 +19,7 @@ h1 {
     width: 700px;
     /* 为了演示效果设置一个固定宽度 */
     height: 280px;
-    top: 10%;
+    top: 8%;
     background: #ffe5f0;
     /* 柔和的粉红色背景 */
     padding: 20px;
@@ -91,7 +91,7 @@ h1 {
 
     .pomodoro-timer {
         padding: 15px;
-        top: -12%;
+        top: -18%;
         width: 80%;
         max-width: 400px;
         box-shadow: none;
@@ -128,17 +128,16 @@ h1 {
 #daysCounter {
     position: fixed;
     bottom: 5px;
-    left: 50%;
+    width: 50%;
     color: #880e4f;
     padding: 10px;
     font-size: 14px;
     font-family: Arial, sans-serif;
     position: fixed;
 
-    transform: translateX(-50%); /* 通过平移将元素的中心对齐到页面中间 */
-
     font-family: Arial, sans-serif;
-    text-align: center; /* 居中文本 */
+    text-align: center;
+    /* 居中文本 */
 }
 
 
@@ -146,14 +145,9 @@ h1 {
 /* loading */
 
 /* 全屏加载背景 */
-/* 初始状态：隐藏主页面内容 */
-#main-content {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out; /* 主页面淡入过渡效果 */
-}
 
 /* 视频容器全屏显示 */
-#preload-video-container {
+#preload-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -162,20 +156,45 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black; /* 视频背景色 */
-    z-index: 9999; /* 保证在页面最上层 */
-    transition: opacity 1s ease-in-out; /* 视频淡出过渡效果 */
+    /* 视频背景色 */
+    background-color: white;
+    /* 保证在页面最上层 */
+    z-index: 99;
+    /* 视频淡出过渡效果 */
+    transition: opacity 0.2s ease-in-out;
 }
 
-/* 全屏视频 */
-#preload-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 /* 视频容器隐藏时的状态（淡出） */
-#preload-video-container.hidden {
+#preload-container.hidden {
     opacity: 0;
-    pointer-events: none; /* 禁止点击交互 */
+    pointer-events: none;
+    /* 禁止点击交互 */
+}
+
+#preload-icon-wrapper {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: #fff;
+    width: 40%;
+    /* 图标的宽度 */
+    display: flex;
+    height: 100%;
+}
+
+.icon {
+    position: absolute;
+    max-width: 100%;
+    /* 初始时，图标的宽度设置为 100% */
+    height: auto;
+}
+
+#preload-icon-white {
+    clip-path: inset(0 100% 0 0);
+    /* 初始时灰色图标不可见，通过clip-path将其裁剪 */
+    transition: clip-path 0.3s ease;
+    /* 平滑的过渡效果 */
+    z-index: 100;
+
 }

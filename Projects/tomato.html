@@ -11,40 +11,63 @@
 <body>
 
     <!-- Loading Screen -->
+
     <!-- 视频预加载动画 -->
-    <div id="preload-video-container">
-        <video id="preload-video" autoplay muted playsinline>
-            <source src="/assets/ui/My Movie.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <div id="preload-container">
+
+        <div id="preload-icon-wrapper">
+            <img src="/assets//ui/element (2).png" alt="White Icon" class="icon" id="preload-icon-white">
+            <img src="/assets//ui/element (1).png" alt="Gray Icon" class="icon" id="preload-icon-gray">
+        </div>
     </div>
-
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const preloadVideo = document.getElementById("preload-video");
-            const mainContent = document.getElementById("main-content");
-            const preloadContainer = document.getElementById("preload-video-container");
+        const preloadContainer = document.getElementById("preload-container");
+        function updateProgressBar(progress) {
+            const grayIcon = document.querySelector('#preload-icon-white');
+            // 根据进度百分比调整灰度图标的显示
+            grayIcon.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
+        }
 
-            // 当视频播放结束时
-            preloadVideo.onended = function () {
-                // 视频容器淡出
-                preloadContainer.classList.add('hidden');
-                // 页面内容淡入
-                mainContent.style.opacity = 1;
-            };
-        });
+        // 测试：每隔 1 秒增加 10% 进度
+        const stopPoints = [21,  67, 93, 93, 100];
+        const stopDuration = 300; // 每个停顿点的持续时间
+        let currentStopIndex = 0; // 当前的停顿点索引
+
+        let progress = 0;
+        const interval = setInterval(() => {
+    if (progress == 100) {
+        console.log("end");
+        console.log("100%");
+
+        clearInterval(interval);
+        // 视频容器淡出
+        preloadContainer.classList.add('hidden');
+    } else{ 
+        if(progress == 93){
+            if (!document.querySelector('#oml2d-canvas')) {
+                console.log("pause");
+            }else{
+                console.log("update" + progress + "%");
+            // 将 progress 设置为下一个停顿点
+                progress = stopPoints[currentStopIndex];
+            // 移动到下一个停顿点
+            currentStopIndex++;
+            updateProgressBar(progress);
+            }
+        }else{
+
+            console.log("update" + progress + "%");
+            // 将 progress 设置为下一个停顿点
+            progress = stopPoints[currentStopIndex];
+            // 移动到下一个停顿点
+            currentStopIndex++;
+            updateProgressBar(progress);
+        }
+    }
+}, stopDuration);
 
     </script>
 
-
-    <!-- <img src="/assets//img/荞麦花.png" alt="Sticker Image" class="sticker"> -->
-    <style>
-        .sticker {
-            display: inline-block;
-            filter: drop-shadow(0 0 10px white);
-            /* 可调节数值让边缘更宽 */
-        }
-    </style>
 
     <div class="pomodoro-timer">
         <h1>Pomodoro Timer</h1>
@@ -62,28 +85,14 @@
             <button id="long-break">Long Break (15 min)</button>
         </div>
     </div>
-    <div id="daysCounter">We've met for <span id="days"></span> days</div>
+
+
+
+
     <script src="/assets/js/tomato.js"></script>
 
     <script src="/assets/js/live2d.js"></script>
-
-    <script>
-        // 计算开放天数的函数
-        function calculateDaysSinceLaunch() {
-            // 网站开放日期 (2023-12-27)
-            const launchDate = new Date('2023-12-27');
-            // 获取当前日期
-            const currentDate = new Date();
-            // 计算差值 (毫秒)
-            const timeDifference = currentDate - launchDate;
-            // 将毫秒转换为天数
-            const daysSinceLaunch = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            return daysSinceLaunch;
-        }
-
-        // 将天数显示在页面上
-        document.getElementById('days').innerText = calculateDaysSinceLaunch();
-    </script>
+    <!-- live2d -->
     <script type="module">
         let oml2d;
         let expressions; // 存储模型表情的数组
@@ -286,8 +295,33 @@
             // }
         }
         loadLive2DModel();
-
+        // setTimeout(loadLive2DModel,6000);
     </script>
+
+
+
+
+    <!-- 页脚记录天数 -->
+    <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love</div>
+    <!-- // 计算开放天数的函数 -->
+    <script>
+
+        function calculateDaysSinceLaunch() {
+            // 网站开放日期 (2023-12-27)
+            const launchDate = new Date('2023-12-27');
+            // 获取当前日期
+            const currentDate = new Date();
+            // 计算差值 (毫秒)
+            const timeDifference = currentDate - launchDate;
+            // 将毫秒转换为天数
+            const daysSinceLaunch = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            return daysSinceLaunch;
+        }
+
+        // 将天数显示在页面上
+        document.getElementById('days').innerText = calculateDaysSinceLaunch();
+    </script>
+
 </body>
 
 </html>
