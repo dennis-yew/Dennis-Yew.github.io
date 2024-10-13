@@ -303,7 +303,7 @@
     </script>
 
     <!-- 藏宝图显示区域 -->
-    <style>
+    <!-- <style>
         #treasureMap {
             position: absolute;
             top: 12%;
@@ -339,21 +339,16 @@
     </style>
     <div id="treasureMap">
         <div id="keywordList"></div>
-    </div>
+    </div> -->
     <script>
         function TreasureKeys(keyword) {
-
-            const keywordList = document.getElementById('keywordList');
-            keywordList.innerHTML = '';  // 清空之前的内容
-            const keywordElement = document.createElement('span');
-            keywordElement.classList.add('keyword');
+            const keywordElement = document.getElementById('keyword');
             keywordElement.textContent = keyword;
-            keywordList.appendChild(keywordElement);
         }
     </script>
 
     <!-- 页脚记录天数 -->
-    <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love</div>
+    <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love<span id="keyword"></span></div>
     <!-- // 计算开放天数的函数 -->
     <script>
 

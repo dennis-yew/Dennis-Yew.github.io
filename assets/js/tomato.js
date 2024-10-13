@@ -232,14 +232,18 @@ var keywords = startGame(finishPomodoroCycle());
 
 // 游戏开始
 function startGame(Gameindex) {
+    let slicedArray = '';
     if (Gameindex == null) {
-        let newWord = wordBank[0];
-        return newWord;
+        return slicedArray;
     } else {
-        keywords = wordBank.slice(0, Gameindex);
+        if(Gameindex >= wordBank.length){
+            // 获取到索引 wordBank.length 的元素 (不包含 wordBank.length)
+            slicedArray = wordBank.slice(0, wordBank.length).join(''); // 无分隔符拼接
+            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | "
+        }else
+        slicedArray = wordBank.slice(0, Gameindex).join(''); // 无分隔符拼接
         // 将数组元素用逗号拼接成字符串
-        keywords.join(', ');
-        return keywords;
+        return slicedArray;
     }
 
     // const userAnswer = prompt('请说出你认为的句子：');
