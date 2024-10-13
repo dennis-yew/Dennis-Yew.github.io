@@ -4,7 +4,8 @@ let is25Timer = true;
 let timeLeft = 1500; // 25 minutes in seconds
 let defaultTime = 1500;
 let postEndTimer; // 新增：用于处理计时结束后5分钟的延迟触发
-
+let startTime;
+let expectedEndTime;
 const minutesDisplay = document.getElementById('minutes');
 const secondsDisplay = document.getElementById('seconds');
 const startButton = document.getElementById('start');
@@ -32,7 +33,12 @@ function startTimer() {
     }
     if (!isRunning) {
         isRunning = true;
+        startTime = Date.now(); // 获取当前时间戳
+        expectedEndTime = startTime + timeLeft * 1000; // 预计结束时间 = 当前时间 + 剩余秒数
+
         timer = setInterval(() => {
+            let currentTime = Date.now(); // 获取当前时间戳
+            timeLeft = Math.round((expectedEndTime - currentTime) / 1000); // 计算剩余秒数
             if (timeLeft > 0) {
                 timeLeft--;
                 updateTimerDisplay();
@@ -222,7 +228,7 @@ function getRandomWord() {
 }
 
 // 存放所有抽取的字
-let sentence = [];
+var keywords = startGame(finishPomodoroCycle());
 
 // 游戏开始
 function startGame(Gameindex) {
@@ -230,15 +236,15 @@ function startGame(Gameindex) {
         let newWord = wordBank[0];
         return newWord;
     } else {
-        const slicedArray = wordBank.slice(0, Gameindex);
+        keywords = wordBank.slice(0, Gameindex);
         // 将数组元素用逗号拼接成字符串
-        slicedArray.join(', ');
-        return slicedArray;
+        keywords.join(', ');
+        return keywords;
     }
 
     // const userAnswer = prompt('请说出你认为的句子：');
     // // 判断用户输入是否正确
-    // if (userAnswer === sentence.join('')) {
+    // if (userAnswer === keywords.join('')) {
     //   console.log('恭喜你，你猜对了！');
     // } else {
     //   console.log('很遗憾，你猜错了。正确的句子是：', sentence.join(''));
