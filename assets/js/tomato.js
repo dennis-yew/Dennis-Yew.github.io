@@ -232,18 +232,21 @@ var keywords = startGame(getCycleCount());
 
 // 游戏开始
 function startGame(Gameindex) {
-    let slicedArray = '';
+    let slicedArray = ' | keys';
+
     if (Gameindex == 0) {
+        // 如果 Gameindex 为 0，可以处理一些逻辑或返回空字符串
         return slicedArray;
     } else {
-        if(Gameindex >= wordBank.length){
+        if (Gameindex >= wordBank.length) {
             // 获取到索引 wordBank.length 的元素 (不包含 wordBank.length)
             slicedArray = wordBank.slice(0, wordBank.length).join(''); // 无分隔符拼接
-            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | "
-        }else
+            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | keys: "
+        } else {
+            // 获取到索引 Gameindex 的元素 (不包含 Gameindex)
             slicedArray = wordBank.slice(0, Gameindex).join(''); // 无分隔符拼接
-            // 将数组元素用逗号拼接成字符串
-            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | "
+            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | keys: "
+        }
     }
-    return slicedArray;
+    return slicedArray; // 返回拼接后的字符串
 }
