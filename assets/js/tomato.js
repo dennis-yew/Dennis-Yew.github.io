@@ -127,12 +127,13 @@ function triggerPauseEvent() {
 // 自定义触发事件：计时结束时触发
 function triggerEndEvent() {
     console.log('Timer ended');
+    setTimer(1500);
     if (is25Timer) {
-        const Gameindex = finishPomodoroCycle();
+        const Gameindex = finishPomodoroCycle()-1;
         // 可以在这里添加25计时结束后的其他功能
         const eventData = 5; // ><
-        const newWord = wordBank[Gameindex-1];
-        const keywords = startGame(Gameindex);
+        const newWord = (Gameindex >= 0 && Gameindex < wordBank.length) ? wordBank[Gameindex] : ".";
+        const keywords = startGame(Gameindex+1);
         const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, keys: newWord, keywords: keywords} });
         window.dispatchEvent(event);  // 触发事件
     } else {

@@ -72,6 +72,41 @@
         <div></div>
     </div>
 
+    <div onclick="resetkeys()" id="resetkeys">
+        <svg t="1728880667440" id="resetbutton" class="icon" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="6038" width="48" height="48"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path
+                d="M1024 368V0l-150.4 150.4C779.2 56 649.6 0 512 0 230.4 0 0 230.4 0 512s230.4 512 512 512c16 0 32-1.6 49.6-3.2 123.2-12.8 236.8-68.8 321.6-156.8 54.4-57.6 97.6-128 121.6-208L880 620.8C832 782.4 681.6 896 512 896 300.8 896 128 723.2 128 512S300.8 128 512 128c104 0 200 41.6 272 112l-128 128h368z"
+                p-id="6039" fill="#ffc0cb"></path>
+        </svg>
+        <!-- <img src="/assets//ui/reset.svg" alt="reset" id="resetbutton"> -->
+    </div>
+    <style>
+        #resetkeys {
+            width: 30px;
+            height: 30px;
+            left: 10%;
+            top: 7%;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            justify-content: center;
+            background-color: #ffc0cb6b;
+            z-index: 1;
+        }
+
+        #resetbutton {
+            width: 50%;
+            height: 50%;
+        }
+
+        #resetbutton path {
+            fill: rgba(255, 255, 255, 0.529);
+            /* 修改为你需要的颜色 */
+        }
+    </style>
     <script type="text/javascript">
         function openDark(toggle) {
             let body = document.body;
@@ -79,6 +114,8 @@
             Timerdisplay.classList.toggle('darkmode');
             const DaysCounter = document.querySelector('#daysCounter');
             DaysCounter.classList.toggle('darkmode');
+            const Resetkeys = document.querySelector('#resetkeys');
+            Resetkeys.classList.toggle('darkmode');
             if (toggle.state == null) {
                 toggle.state = false;
             }
@@ -88,6 +125,16 @@
                 body.className = "dark";
             }
             toggle.state = !toggle.state;
+        }
+        function resetkeys() {
+            let currentCount = getCycleCount();
+            if(currentCount){
+                localStorage.setItem('pomodoroCycleCount', 0);
+                console.log("set current Cyclecount to zero")
+                TreasureKeys("| keys")
+            }else{
+                console.log("current count = 0")
+            }
         }
     </script>
 
@@ -222,7 +269,7 @@
                 // 创建新的音频实例并播放
                 currentAudio = new Audio(src);
                 // 设置音量，默认值为1（最大音量），可以通过传参调整
-                currentAudio.volume = 0.3;
+                currentAudio.volume = 1;
                 currentAudio.play();
             }
 
@@ -310,7 +357,8 @@
     </script>
 
     <!-- 页脚记录天数 -->
-    <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love<span id="keywords"></span></div>
+    <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love<span
+            id="keywords"></span></div>
     <!-- // 计算开放天数的函数 -->
     <script>
 

@@ -64,6 +64,9 @@ body > div.pomodoro-timer > div.timer-display.darkmode{
 #daysCounter.darkmode{
     color: rgb(255, 229, 229);
 }
+#resetkeys.darkmode{
+    background-color: rgba(70,70,70,1);
+}
 /* ########### */
 
 
