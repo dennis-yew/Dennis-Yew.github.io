@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div>
+
+        <canvas id="myRadarChart" style="height: 50%; width: 50%;"></canvas>
+    </div>
+    <style>
+        div {
+            width: 600px;  /* 自定义宽度 */
+            height: 600px; 
+        }
+        /* 这里可以通过CSS控制canvas的尺寸 */
+        canvas {
+            width: 50% !important;  /* 自定义宽度 */
+            height: 50% !important; /* 自定义高度 */
+        }
+    </style>
+    <script>
+        // 获取canvas上下文
+        var ctx = document.getElementById('myRadarChart').getContext('2d');
+
+        // 定义数据和维度名称
+        var data = {
+            labels: ['情感与激情类', '无条件的爱', '自我价值实现', '利益与互惠','关系稳定性'],  // 五个维度
+            datasets: [{
+                label: '数据集1',
+                data: [4, 2, 3, 5, 1],  // 每个维度的值
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',  // 填充颜色
+                borderColor: 'rgba(255, 99, 132, 1)',  // 边框颜色
+                borderWidth: 1
+            }]
+        };
+        // 定义雷达图配置，包括刻度和每格宽度
+        var options = {
+            responsive: false,  // 我们不使用响应式布局，这样宽高由 canvas 控制
+            maintainAspectRatio: true,  // 允许我们动态设置宽高
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,               // 最小值
+                    max: 5,             // 最大值
+                    stepSize: 1,          // 每格之间的间隔（每格的宽度）
+                }
+            }
+        };
+
+        // 创建雷达图
+        var myRadarChart = new Chart(ctx, {
+            type: 'radar',
+            data: data,
+            options: options
+        });
+    </script>
+</body>
+
+</html>

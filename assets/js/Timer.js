@@ -30,7 +30,7 @@ function startTimer() {
     // 确保计时器为零时不开始计时
     if (timeLeft === 0) {
         timeLeft = iniTimer;
-        updateTimerDisplay();
+        setTimer(iniTimer);
     }
     if (!isRunning) {
         isRunning = true;
@@ -143,7 +143,7 @@ function triggerEndEvent() {
         console.log("not 25 timer")
         window.dispatchEvent(event);  // 触发事件
     }
-    setTimer(iniTimer);
+    
 }
 // 自定义触发事件：计时结束后5分钟触发
 function triggerFiveMinutesAfterEnd() {
