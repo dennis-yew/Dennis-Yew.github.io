@@ -71,8 +71,8 @@
     <div onclick="openDark(this)" class="toggle">
         <div></div>
     </div>
-
-    <div onclick="resetkeys()" id="resetkeys">
+    <!-- onclick="resetkeys()"  -->
+    <div id="resetkeys">
         <svg t="1728880667440" id="resetbutton" class="icon" viewBox="0 0 1024 1024" version="1.1"
             xmlns="http://www.w3.org/2000/svg" p-id="6038" width="48" height="48"
             xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -107,7 +107,7 @@
             /* 修改为你需要的颜色 */
         }
     </style>
-    <script type="module">
+    <!-- <script type="module">
         import { TreasureKeys } from "/assets/js/Pomodoro.js";
         import { getCycleCount } from "/assets/js/Timer.js";
         // 定义resetkeys函数
@@ -126,7 +126,9 @@
             const resetButton = document.getElementById('resetkeys');
             resetButton.addEventListener('click', resetkeys);  // 点击时执行resetkeys
         });
-        function openDark(toggle) {
+    </script> -->
+    <script>
+            function openDark(toggle) {
             let body = document.body;
             const Timerdisplay = document.querySelector('body > div.pomodoro-timer> div.timer-display');
             Timerdisplay.classList.toggle('darkmode');
@@ -145,7 +147,6 @@
             toggle.state = !toggle.state;
         }
     </script>
-
 
 
     <div class="pomodoro-timer">

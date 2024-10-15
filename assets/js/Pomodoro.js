@@ -105,7 +105,7 @@ function loadLive2DModel() {
         // 创建新的音频实例并播放
         currentAudio = new Audio(src);
         // 设置音量，默认值为1（最大音量），可以通过传参调整
-        currentAudio.volume = 1;
+        currentAudio.volume = 0.3;
         currentAudio.play();
     }
 
