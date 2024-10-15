@@ -129,12 +129,12 @@ function triggerEndEvent() {
     console.log('Timer ended');
     setTimer(1500);
     if (is25Timer) {
-        const Gameindex = finishPomodoroCycle()-1;
+        const Gameindex = finishPomodoroCycle() - 1;
         // 可以在这里添加25计时结束后的其他功能
         const eventData = 5; // ><
         const newWord = (Gameindex >= 0 && Gameindex < wordBank.length) ? wordBank[Gameindex] : ".";
-        const keywords = startGame(Gameindex+1);
-        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, keys: newWord, keywords: keywords} });
+        const keywords = startGame(Gameindex + 1);
+        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, keys: newWord, keywords: keywords } });
         window.dispatchEvent(event);  // 触发事件
     } else {
         // #####?
@@ -219,10 +219,33 @@ window.onload = function () {
 //     "No mistakes", "in the tango", "not like", "life", 
 //     "It's simple",  "That's", "what makes", "the tango", "so great", 
 //     "If you", "make a mistake", "get", "all", "tangled", "up"];
-const wordBank = [
+var wordBank = [
     "J", "u", "m", "p",
-    "Y", "o", "u","I"
-    ];
+    "Y", "o", "u", "I"
+];
+
+var sentenceArray = [
+    "Life",
+    "countless",
+    "lasts",
+    "springs",
+    "ahead",
+    "me",
+    "and",
+    "30,000",
+    "I",
+    "still",
+    "have",
+    "yesterday's",
+    "can't",
+    "drench",
+    "today,",
+    "rain",
+    "days.",
+    "about",
+    "only"
+];
+
 // 随机抽取一个字
 function getRandomWord() {
     const randomIndex = Math.floor(Math.random() * wordBank.length);

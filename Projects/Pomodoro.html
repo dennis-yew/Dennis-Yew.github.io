@@ -130,7 +130,9 @@
             let currentCount = getCycleCount();
             if(currentCount){
                 localStorage.setItem('pomodoroCycleCount', 0);
-                console.log("set current Cyclecount to zero")
+                console.log("set current Cyclecount to zero");
+                wordBank = sentenceArray;
+                console.log(wordBank);
                 TreasureKeys("| keys")
             }else{
                 console.log("current count = 0")
@@ -373,7 +375,7 @@
             const daysSinceLaunch = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
             return daysSinceLaunch;
         }
-
+        
         // 将天数显示在页面上
         document.getElementById('days').innerText = calculateDaysSinceLaunch();
     </script>
