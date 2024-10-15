@@ -1,6 +1,7 @@
 let timer;
 let isRunning = false;
 let is25Timer = true;
+const iniTimer = 1500;
 let timeLeft = 1500; // 25 minutes in seconds
 let defaultTime = 1500;
 let postEndTimer; // 新增：用于处理计时结束后5分钟的延迟触发
@@ -28,7 +29,7 @@ function updateTimerDisplay() {
 function startTimer() {
     // 确保计时器为零时不开始计时
     if (timeLeft === 0) {
-        timeLeft = 1500;
+        timeLeft = iniTimer;
         updateTimerDisplay();
     }
     if (!isRunning) {
@@ -96,7 +97,7 @@ function setTimer(seconds) {
 
 // 检查是否为番茄钟
 function isworkTimer() {
-    if (timeLeft == 1500) {
+    if (timeLeft == iniTimer) {
         is25Timer = true;
     } else {
         is25Timer = false;
@@ -105,7 +106,7 @@ function isworkTimer() {
 }
 
 
-// ############################## 自定义触发事件 ##############################
+// ############################## 自定义触发事件-给模型传递参数 ##############################
 
 // 自定义触发事件开始时触发
 function triggerStartEvent() {
@@ -127,14 +128,14 @@ function triggerPauseEvent() {
 // 自定义触发事件：计时结束时触发
 function triggerEndEvent() {
     console.log('Timer ended');
-    setTimer(1500);
+    setTimer(iniTimer);
     if (is25Timer) {
         const Gameindex = finishPomodoroCycle() - 1;
         // 可以在这里添加25计时结束后的其他功能
         const eventData = 5; // ><
-        const newWord = (Gameindex >= 0 && Gameindex < wordBank.length) ? wordBank[Gameindex] : ".";
+        const newWord = (Gameindex >= 0 && Gameindex < words.length) ? words[Gameindex] : ".";
         const keywords = startGame(Gameindex + 1);
-        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, keys: newWord, keywords: keywords } });
+        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, key: newWord, keywords: keywords } });
         window.dispatchEvent(event);  // 触发事件
     } else {
         // #####?
@@ -152,8 +153,7 @@ function triggerFiveMinutesAfterEnd() {
     const event = new CustomEvent('AfterEndTimerEnd', { detail: eventData });
     window.dispatchEvent(event);  // 触发事件
 }
-// 自定义触发事件：计时结束后5分钟触发
-
+// 自定义触发事件：计时更改触发
 function triggerChangeTimer() {
     console.log('ChangeTimer');
     // 在这里添加改变时间的功能
@@ -163,32 +163,26 @@ function triggerChangeTimer() {
 }
 
 
-// ################################ 页面内事件监听 ############################
+// ################################ Timer内事件监听 ############################
 startButton.addEventListener('click', startTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 
-workButton.addEventListener('click', () => setTimer(1500)); // 25 minutes
+workButton.addEventListener('click', () => setTimer(iniTimer)); // 25 minutes
 shortBreakButton.addEventListener('click', () => setTimer(300)); // 5 minutes
 longBreakButton.addEventListener('click', () => setTimer(900)); // 15 minutes
 
 
-// 点击暂停按钮时触发事件：
-// 在 pauseTimer 函数中，新增了 triggerPauseEvent() 函数，它会在暂停按钮被点击时调用。你可以在该函数中实现你想要的功能。
-
-// 计时结束后触发事件：
-// 在 startTimer 函数中，计时结束时调用了 triggerEndEvent() 函数。这个函数在倒计时结束时触发，你可以在这里添加任何需要执行的功能。
-
-// 计时结束后过 5 分钟触发事件：
-// 使用 setTimeout 在计时结束时启动一个 5 分钟的计时器，5 分钟后调用 triggerFiveMinutesAfterEnd() 函数。这个函数会在 5 分钟后触发你定义的事件。
-
+// ################################ 本地番茄钟轮回次数 ############################
 
 // 获取当前轮回次数（如果有）
-function getCycleCount() {
+export function getCycleCount() {
     let count = localStorage.getItem('pomodoroCycleCount');
     return count ? parseInt(count) : 0;  // 如果没有，初始化为0
 }
-
+export function resetCycleCount(){
+    localStorage.setItem('pomodoroCycleCount', 0);  // 重置LocalStorage
+}
 // 更新轮回次数
 function updateCycleCount() {
     let currentCount = getCycleCount();
@@ -204,73 +198,67 @@ function finishPomodoroCycle() {
     return getCycleCount();
 }
 
-// 页面加载时显示当前轮回次数
-window.onload = function () {
-    console.log("Current Tomato Clock Rounds: " + getCycleCount());
-    return getCycleCount();
-}
-
-
 
 // 小彩蛋
 // 字库
-// const wordBank = ['去','爱', '去','创造', '并','最终', '一起','燃烧'];
-// const wordBank = [
-//     "No mistakes", "in the tango", "not like", "life", 
-//     "It's simple",  "That's", "what makes", "the tango", "so great", 
-//     "If you", "make a mistake", "get", "all", "tangled", "up"];
-var wordBank = [
-    "J", "u", "m", "p",
-    "Y", "o", "u", "I"
-];
-
-var sentenceArray = [
-    "Life",
-    "countless",
-    "lasts",
-    "springs",
-    "ahead",
-    "me",
-    "and",
-    "30,000",
-    "I",
-    "still",
-    "have",
-    "yesterday's",
-    "can't",
-    "drench",
-    "today,",
-    "rain",
-    "days.",
-    "about",
-    "only"
-];
-
+import { wordBank } from './wordBank.js';  // 从 wordBank.js 导入句库
 // 随机抽取一个字
-function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * wordBank.length);
-    return wordBank[randomIndex];
-}
+// function getRandomWord() {
+//     const randomIndex = Math.floor(Math.random() * wordBank.length);
+//     return wordBank[randomIndex];
+// }
 
 // 存放所有抽取的字
-var keywords = startGame(getCycleCount());
+const daySentence = wordBank[calculateDaysSinceLaunch() % wordBank.length];
+// 将字符串分割成单词数组
+const words = daySentence.split(' ');
+
+export function updateSentence(){
+    let currentDistanceDays = calculateDaysSinceLaunch();
+    // 获取本地日期
+    let storedDistanceDays = localStorage.getItem('distanceDays') ? parseInt(localStorage.getItem('distanceDays')) : 0;
+    
+    // 检查当前句子是否不同
+    if (currentDistanceDays !== storedDistanceDays) {
+        // 更新内置记录
+        localStorage.setItem('distanceDays', currentDistanceDays);
+        // 重置番茄钟轮回次数
+        resetCycleCount();
+        console.log("updateSentence, days:" + currentDistanceDays);
+    }else{
+        console.log("no need to updateSentence, days:" + storedDistanceDays);
+    }
+}
+
+
+
+export function calculateDaysSinceLaunch() {
+    // 网站开放日期 (2023-12-27)
+    const launchDate = new Date('2023-12-27');
+    // 获取当前日期
+    const currentDate = new Date();
+    // 计算差值 (毫秒)
+    const timeDifference = currentDate - launchDate;
+    // 将毫秒转换为天数
+    const daysSinceLaunch = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    return daysSinceLaunch;
+}
 
 // 游戏开始
-function startGame(Gameindex) {
-    let slicedArray = ' | keys';
-
-    if (Gameindex == 0) {
-        // 如果 Gameindex 为 0，可以处理一些逻辑或返回空字符串
+export function startGame(CycleCount) {
+    console.log(daySentence);
+    // 截取前 CycleCount 个单词
+    let slicedArray = "";
+    if (CycleCount == 0) {
+        // 如果 CycleCount 为 0，可以处理一些逻辑或返回空字符串
         return slicedArray;
     } else {
-        if (Gameindex >= wordBank.length) {
-            // 获取到索引 wordBank.length 的元素 (不包含 wordBank.length)
-            slicedArray = wordBank.slice(0, wordBank.length).join(''); // 无分隔符拼接
-            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | keys: "
+        if (CycleCount >= words.length) {
+            // 获取到索引 words.length 的元素 (不包含 words.length)
+            slicedArray = words.slice(0, words.length).join(''); // 无分隔符拼接
         } else {
-            // 获取到索引 Gameindex 的元素 (不包含 Gameindex)
-            slicedArray = wordBank.slice(0, Gameindex).join(''); // 无分隔符拼接
-            slicedArray = ' | keys: ' + slicedArray; // 在字符串前加 " | keys: "
+            // 获取到索引 CycleCount 的元素 (不包含 CycleCount)
+            slicedArray = words.slice(0, CycleCount).join(''); // 无分隔符拼接
         }
     }
     return slicedArray; // 返回拼接后的字符串
