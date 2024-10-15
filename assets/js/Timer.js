@@ -128,7 +128,6 @@ function triggerPauseEvent() {
 // 自定义触发事件：计时结束时触发
 function triggerEndEvent() {
     console.log('Timer ended');
-    setTimer(iniTimer);
     if (is25Timer) {
         const Gameindex = finishPomodoroCycle() - 1;
         // 可以在这里添加25计时结束后的其他功能
@@ -140,10 +139,11 @@ function triggerEndEvent() {
     } else {
         // #####?
         const eventData = 5; // ><
-        const newWord = " ";
-        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, keys: newWord } });
+        const event = new CustomEvent('TimerEnd', { detail: { eventData: eventData, key: " ", keywords: " " } });
+        console.log("not 25 timer")
         window.dispatchEvent(event);  // 触发事件
     }
+    setTimer(iniTimer);
 }
 // 自定义触发事件：计时结束后5分钟触发
 function triggerFiveMinutesAfterEnd() {
