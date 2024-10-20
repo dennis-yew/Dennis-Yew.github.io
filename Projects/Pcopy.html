@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="/assets/css/Pcopy.css">
+</head>
+
+<body class="light">
+
+    <!-- Loading Screen -->
+
+    <!-- 视频预加载动画 -->
+    <!-- <div id="preload-container">
+
+        <div id="preload-icon-wrapper">
+            <img src="/assets//ui/element (2).png" alt="White Icon" class="icon" id="preload-icon-white">
+            <img src="/assets//ui/element (1).png" alt="Gray Icon" class="icon" id="preload-icon-gray">
+        </div>
+    </div>
+    <script>
+        const preloadContainer = document.getElementById("preload-container");
+        function updateProgressBar(progress) {
+            const grayIcon = document.querySelector('#preload-icon-white');
+            // 根据进度百分比调整灰度图标的显示
+            grayIcon.style.clipPath = `inset(0 ${100 - progress}% 0 0)`;
+        }
+
+        // 测试：每隔 1 秒增加 10% 进度
+        const stopPoints = [21, 67, 93, 93, 100];
+        const stopDuration = 150; // 每个停顿点的持续时间
+        let currentStopIndex = 0; // 当前的停顿点索引
+
+        let progress = 0;
+        const interval = setInterval(() => {
+            if (progress == 100) {
+                console.log("end");
+                console.log("100%");
+
+                clearInterval(interval);
+                // 视频容器淡出
+                preloadContainer.classList.add('hidden');
+            } else {
+                if (progress == 93) {
+                    if (!document.querySelector('#oml2d-canvas')) {
+                        console.log("pause");
+                    } else {
+                        console.log("update" + progress + "%");
+                        // 将 progress 设置为下一个停顿点
+                        progress = stopPoints[currentStopIndex];
+                        // 移动到下一个停顿点
+                        currentStopIndex++;
+                        updateProgressBar(progress);
+                    }
+                } else {
+
+                    console.log("update" + progress + "%");
+                    // 将 progress 设置为下一个停顿点
+                    progress = stopPoints[currentStopIndex];
+                    // 移动到下一个停顿点
+                    currentStopIndex++;
+                    updateProgressBar(progress);
+                }
+            }
+        }, stopDuration);
+
+    </script> -->
+    <!-- 
+    <div onclick="openDark(this)" class="toggle">
+        <div></div>
+    </div> -->
+    <!-- onclick="resetkeys()"  -->
+    <!-- <div id="resetkeys">
+        <svg t="1728880667440" id="resetbutton" class="icon" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg" p-id="6038" width="48" height="48"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path
+                d="M1024 368V0l-150.4 150.4C779.2 56 649.6 0 512 0 230.4 0 0 230.4 0 512s230.4 512 512 512c16 0 32-1.6 49.6-3.2 123.2-12.8 236.8-68.8 321.6-156.8 54.4-57.6 97.6-128 121.6-208L880 620.8C832 782.4 681.6 896 512 896 300.8 896 128 723.2 128 512S300.8 128 512 128c104 0 200 41.6 272 112l-128 128h368z"
+                p-id="6039" fill="#ffc0cb"></path>
+        </svg>
+        <img src="/assets//ui/reset.svg" alt="reset" id="resetbutton"> -->
+    <!-- </div>
+    <style>
+        #resetkeys {
+            width: 30px;
+            height: 30px;
+            left: 10%;
+            top: 7%;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            justify-content: center;
+            background-color: #ffc0cb6b;
+            z-index: 1;
+        }
+
+        #resetbutton {
+            width: 50%;
+            height: 50%;
+        }
+
+        #resetbutton path {
+            fill: rgba(255, 255, 255, 0.529);
+            /* 修改为你需要的颜色 */
+        }
+    </style> -->
+    <!-- <script>
+            function openDark(toggle) {
+            let body = document.body;
+            const Timerdisplay = document.querySelector('body > div.pomodoro-timer> div.timer-display');
+            Timerdisplay.classList.toggle('darkmode');
+            const DaysCounter = document.querySelector('#daysCounter');
+            DaysCounter.classList.toggle('darkmode');
+            const Resetkeys = document.querySelector('#resetkeys');
+            Resetkeys.classList.toggle('darkmode');
+            if (toggle.state == null) {
+                toggle.state = false;
+            }
+            if (toggle.state) {
+                body.className = "light";
+            } else {
+                body.className = "dark";
+            }
+            toggle.state = !toggle.state;
+        }
+    </script> -->
+    <div class="wrapper">
+
+        <div class="image-container">
+            <!-- <img src="/Projects/169690023.jpg" alt="Description of the image"> -->
+        </div>
+
+        <div class="pomodoro-timer">
+            <h1>Pomodoro Timer</h1>
+            <div class="timer-display">
+                <span id="minutes">25</span>:<span id="seconds">00</span>
+            </div>
+            <div class="controls">
+                <button id="start-stop">Start</button>
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module" src="/assets/js/Tcopy.js"></script>
+    <script src="/assets/js/live2d.js"></script>
+    <!-- live2d -->
+    <script>
+    const ModelContainer = document.querySelector('body > div > div.image-container');
+    // 模型载入设置
+    let oml2d = OML2D.loadOml2d({
+        sayHello: true,
+        primaryColor: "#ff958b",
+        parentElement: ModelContainer,
+        mobileDisplay: true,
+        statusBar: {
+            // 在这里进行配置
+            disable: true,
+        },
+        menus: {
+            disable: true,
+            // 在这里配置
+        },
+        tips: {
+            messageLine: 4,
+            idleTips: { wordTheDay: !1, message: [], duration: 5e3, interval: 1e4, priority: 2 },
+            welcomeTip: {
+                message: {
+                    daybreak: "早上好呀！新的大冒险就要开始啦！嘿嘿，可莉准备好了哦~",
+                    morning: "早安早安！今天要去哪里探险呢？可莉已经迫不及待了！",
+                    noon: "诶，中午了！要吃好吃的午饭吗？吃饱了才有力气炸鱼呢~",
+                    afternoon: "下午好呀，这个时候有点困了呢…不过再玩一会儿也没关系吧？",
+                    dusk: "天快黑啦~ 要小心，不要踩到可莉的蹦蹦炸弹哦！",
+                    night: "晚上好！可莉今天玩得可开心啦~不过也要早点休息哦！",
+                    lateNight: "已经这么晚了嘛？可莉有点困了…不过还是要说，晚安啦！",
+                    weeHours: "咦？还没睡吗？琴团长会像对可莉一样，‘禁闭’你的！"
+                },
+                duration: 6e3, priority: 2
+            },
+            style: {
+                "left": "110%",
+                "top": "20%",
+                "width": "250px",
+            },
+            mobileStyle: {
+                "align-items": "center",
+                "min-height": "90px",
+                "left": "100px",
+                "top": "-18%",
+                "width": "200px",
+                "font-size": "16px",
+            }
+        },
+        models: [
+            {
+                path: '/assets/model/klee/klee.model3.json',
+                position: [30, 0],
+                scale: 0.06,
+                stageStyle: {
+                    "position": "relative",
+                    "display": "flex",
+                    "left": "16px",
+                    "justify-content": "center",
+                    "transform": "translateX(-50%)", /* 确保图片水平居中 */
+                    "width": "300px", /* 设定图片的宽度，可以根据需要调整 */
+                    "z-index": "1" /* 图片位于闹钟的后面 */
+                },
+                mobilePosition: [0, 0],
+                mobileScale: 0.07,
+                mobileStageStyle: {
+                    "position": "relative",
+                    "top": "0%",
+                    "left": "0%",
+                    "width": "210px",
+                    "z-index": "1"
+
+                }
+            },
+        ]
+    });
+    console.log(oml2d);
+    console.log(oml2d.models.options.models[oml2d.modelIndex].path)
+    </script>
+
+
+    <!-- 页脚记录天数 -->
+    <!-- <div id="daysCounter">&copy; 2024 Dennis. All rights reserved | <span id="days"></span> days in love<span
+            id="keywords"></span></div> -->
+    <!-- // 计算开放天数的函数 -->
+    <!-- <script type="module">
+        // import { calculateDaysSinceLaunch } from "/assets/js/Timer.js";
+        // 将天数显示在页面上
+        // document.getElementById('days').innerText = calculateDaysSinceLaunch();
+    </script> -->
+
+</body>
+
+</html>

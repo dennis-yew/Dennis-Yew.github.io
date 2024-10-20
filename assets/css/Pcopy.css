@@ -1,0 +1,212 @@
+/* 全局样式 */
+:root {
+    --primaryColor: #ea7166d2;
+}
+
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #101010;
+    /* 深黑色背景 */
+    overflow: hidden;
+    /* 隐藏溢出内容 */
+}
+
+/* 计时器标题 */
+h1 {
+    font-size: 32px;
+    /* 适中的字体大小 */
+    font-weight: 300;
+    /* 使用较细的字重，保持简洁感 */
+    color: var(--primaryColor);
+    /* 更亮的灰白色字体，确保在黑色背景上清晰可见 */
+    margin: 0;
+    /* 与其他元素适当留白 */
+    letter-spacing: 1.5px;
+    /* 稍宽的字间距，增加可读性 */
+    text-align: center;
+    /* 居中对齐 */
+    font-family: "Helvetica Neue", sans-serif;
+    /* 使用更加简洁的系统字体 */
+}
+
+/* 计时器容器 */
+.pomodoro-timer {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    /* 默认竖向排列 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 计时显示 */
+.timer-display {
+    font-size: 80px;
+    /* 增大字体，使计时数字更加突出 */
+    font-weight: 100;
+    /* 继续使用更细的字体，保持简洁感 */
+    letter-spacing: 2px;
+    /* 字符间距稍宽 */
+    margin-bottom: 30px;
+    color: var(--primaryColor);
+    /* 字体颜色为亮灰色 */
+    margin: 10px;
+}
+
+/* 按钮容器 */
+.controls {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    /* 保证按钮容器的宽度与计时器一致 */
+}
+
+/* 通用按钮样式 */
+button {
+    width: 60px;
+    /* 按钮尺寸 */
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    font-size: 14px;
+    /* 较小的字体 */
+    font-weight: 300;
+    /* 较细的按钮字体 */
+    letter-spacing: 1px;
+    /* 字符间距 */
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    /* 添加自然过渡效果 */
+    background-color: rgba(0, 0, 0, 0.15);
+    /* 透明度较低的半透明背景 */
+    backdrop-filter: blur(8px);
+    /* 背景模糊效果 */
+}
+
+/* Start 按钮 */
+#start-stop {
+    background-color: rgba(76, 217, 100, 0.3);
+    /* 半透明绿色 */
+    color: rgba(76, 217, 100, 1);
+    /* 更深的绿色字体 */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* 平滑的颜色和背景过渡 */
+}
+
+#start-stop:hover {
+    background-color: rgba(52, 199, 89, 0.4);
+    /* 悬停时更深的绿色 */
+}
+
+/* Stop 按钮（当暂停时显示） */
+#start-stop.pause {
+    background-color: rgba(255, 59, 48, 0.3);
+    /* 半透明红色 */
+    color: rgb(228 95 87);
+    /* 更深的红色字体 */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* 平滑的颜色过渡 */
+}
+
+#start-stop.pause:hover {
+    background-color: rgb(196 76 69 / 40%);;
+    /* 悬停时更深的红色 */
+}
+
+/* Reset 按钮 */
+#reset {
+    background-color: rgba(142, 142, 147, 0.3);
+    /* 半透明灰色 */
+    color: rgba(142, 142, 147, 1);
+    /* 更深的灰色字体 */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* 平滑的颜色和背景过渡 */
+}
+
+#reset:hover {
+    background-color: rgba(174, 174, 178, 0.4);
+    /* 悬停时更深的灰色 */
+}
+
+/* ######## */
+/* ######## */
+/* ######## */
+/* ######## */
+
+/* 容器的整体布局，包括计时器和图片 */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* 默认竖直排列，适合桌面设备 */
+    gap: 20px;
+    /* 增加番茄钟和图片之间的间距 */
+    height: 100vh;
+}
+
+/* 图片容器的样式 */
+.image-container {
+    display: flex;
+    /* 默认显示图片容器 */
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+    /* 旋转时有过渡效果 */
+}
+
+/* 图片的样式 */
+.image-container img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.3s ease;
+    /* 旋转时有过渡效果 */
+}
+
+/* 针对手机横屏显示和旋转图片 */
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        transform: rotate(90deg);
+        /* 旋转计时器容器90度 */
+        flex-direction: row;
+
+        width: auto;
+        /* 清除宽度限制，让其自适应 */
+        height: auto;
+        /* 清除高度限制 */
+        gap: 0px;
+        /* 手机横屏时减小间距 */
+    }
+
+    .image-container {
+        display: flex;
+        /* 显示图片 */
+    }
+
+    .image-container img {
+        max-width: 200px;
+        /* 可调节图片的大小 */
+    }
+}
+
+/* 针对平板和大屏设备，图片正常显示，不旋转 */
+@media (min-width: 768px) {
+    .image-container img {
+        transform: rotate(0deg);
+        /* 正常显示图片 */
+    }
+}

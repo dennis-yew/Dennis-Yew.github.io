@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Apple Style Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        #clock {
+            width: 60vmin;
+            height: 60vmin;
+            border: 8px solid white;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        /* 时钟刻度 */
+        .mark {
+            position: absolute;
+            width: 4px;
+            height: 15px;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            transform-origin: center bottom;
+        }
+
+        /* 长刻度 */
+        .mark-large {
+            height: 25px;
+            background-color: white;
+        }
+
+        .hand {
+            position: absolute;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0% 100%; /* 指针一端围绕中心旋转 */
+            transform: rotate(90deg); /* 初始角度 */
+            transition: transform 0.1s ease-in-out;
+        }
+
+        #hour {
+            height: 6px;
+            width: 30%;
+        }
+
+        #minute {
+            height: 4px;
+            width: 45%;
+        }
+
+        #second {
+            background-color: red;
+            height: 2px;
+            width: 50%;
+        }
+
+        #center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <!-- 添加刻度 -->
+        <div class="mark mark-large" style="transform: rotate(0deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(30deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(60deg) translate(-50%, -290%);"></div>
+        <div class="mark mark-large" style="transform: rotate(90deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(120deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(150deg) translate(-50%, -290%);"></div>
+        <div class="mark mark-large" style="transform: rotate(180deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(210deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(240deg) translate(-50%, -290%);"></div>
+        <div class="mark mark-large" style="transform: rotate(270deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(300deg) translate(-50%, -290%);"></div>
+        <div class="mark" style="transform: rotate(330deg) translate(-50%, -290%);"></div>
+
+        <div id="hour" class="hand"></div>
+        <div id="minute" class="hand"></div>
+        <div id="second" class="hand"></div>
+        <div id="center"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const second = now.getSeconds();
+            const minute = now.getMinutes();
+            const hour = now.getHours();
+
+            // 秒针，每秒转6度 (360度 / 60秒)
+            const secondDegrees = (second / 60) * 360;
+            // 分针，每分钟转6度，此外每秒还要稍微移动一点
+            const minuteDegrees = (minute / 60) * 360 + (second / 60) * 6;
+            // 时针，每小时转30度，此外每分钟还要稍微移动一点
+            const hourDegrees = (hour % 12 / 12) * 360 + (minute / 60) * 30;
+
+            // 更新指针旋转，移除translate(-50%, -50%)
+            document.getElementById('second').style.transform = `rotate(${secondDegrees}deg)`;
+            document.getElementById('minute').style.transform = `rotate(${minuteDegrees}deg)`;
+            document.getElementById('hour').style.transform = `rotate(${hourDegrees}deg)`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initialize the clock immediately
+    </script>
+</body>
+</html>
