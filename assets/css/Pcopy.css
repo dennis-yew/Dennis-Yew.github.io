@@ -19,9 +19,9 @@ body {
 
 /* 计时器标题 */
 h1 {
-    font-size: 32px;
+    font-size: 28px;
     /* 适中的字体大小 */
-    font-weight: 300;
+    font-weight: 400;
     /* 使用较细的字重，保持简洁感 */
     color: var(--primaryColor);
     /* 更亮的灰白色字体，确保在黑色背景上清晰可见 */
@@ -52,7 +52,7 @@ h1 {
 .timer-display {
     font-size: 80px;
     /* 增大字体，使计时数字更加突出 */
-    font-weight: 100;
+    font-weight: 200;
     /* 继续使用更细的字体，保持简洁感 */
     letter-spacing: 2px;
     /* 字符间距稍宽 */
@@ -72,11 +72,16 @@ h1 {
 
 /* 通用按钮样式 */
 button {
-    width: 60px;
+    width: 70px;
     /* 按钮尺寸 */
-    height: 60px;
+    height: 70px;
     border-radius: 50%;
     border: none;
+    /* 实现字体居中 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     font-size: 14px;
     /* 较小的字体 */
     font-weight: 300;

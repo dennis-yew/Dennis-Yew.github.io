@@ -10,9 +10,11 @@ export const wordBank = [
     "Because the weather was good, because the weather was bad and because the weather was good enough. I loved every moment of it.",
     "It's a beautiful life",
     "A life of no regrets, only love is hard to find",
-    "Practice makes perfect",
     "Nothing's gonna change my love for you",
+    "Practice makes perfect",
     "do or not to do",
     "Y o u j u m p I j u m p",
     "you're here in my heart, and my heart will go on and on",
+    "love from China",
+    "stay with me",
 ];
