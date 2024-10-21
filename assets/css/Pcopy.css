@@ -11,7 +11,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #101010;
+    background-color: #000000;
     /* 深黑色背景 */
     overflow: hidden;
     /* 隐藏溢出内容 */
@@ -50,7 +50,7 @@ h1 {
 
 /* 计时显示 */
 .timer-display {
-    font-size: 80px;
+    font-size: 100px;
     /* 增大字体，使计时数字更加突出 */
     font-weight: 200;
     /* 继续使用更细的字体，保持简洁感 */
@@ -200,6 +200,9 @@ button {
     .image-container {
         display: flex;
         /* 显示图片 */
+    }
+    #oml2d-canvas {
+        transform: rotate(-90deg);
     }
 
     .image-container img {
