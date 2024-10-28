@@ -7,7 +7,7 @@ const startStopButton = document.getElementById('start-stop');
 const resetButton = document.getElementById('reset');
 
 let countdownInterval;
-let timeLeft = 4; // 25分钟，单位为秒
+let timeLeft = 25 * 60; // 25分钟，单位为秒
 let isRunning = false;
 
 // 格式化时间
@@ -65,7 +65,7 @@ function startStopTimer() {
 function resetTimer() {
     clearInterval(countdownInterval);  // 停止计时
     isRunning = false;
-    timeLeft = 4;  // 重置时间为25分钟
+    timeLeft = 25 * 60;  // 重置时间为25分钟
     updateDisplay();  // 更新显示
     startStopButton.textContent = 'Start';  // 将按钮改为“Start”
     startStopButton.classList.remove('pause');  // 恢复为绿色
