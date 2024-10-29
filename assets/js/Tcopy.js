@@ -1,5 +1,5 @@
 // project.js
-import { finishPomodoroCycle,getCycleCount,resetCycleCount,startGame } from '/assets/js/showWord.js'; // 注意路径要正确
+import { finishPomodoroCycle,getCycleCount,updateSentence,startGame } from '/assets/js/showWord.js'; // 注意路径要正确
 // 获取页面元素
 const minutesDisplay = document.getElementById('minutes');
 const secondsDisplay = document.getElementById('seconds');
@@ -77,6 +77,7 @@ resetButton.addEventListener('click', resetTimer);
 
 // 初始化显示
 updateDisplay();
+updateSentence();
 console.log("Pomodoro_Rounds: " + getCycleCount());
 
 let wordindex = getCycleCount();
